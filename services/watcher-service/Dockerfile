@@ -1,19 +1,14 @@
-# Use a base image with cron installed, for example, an Ubuntu image
+# Use the Alpine base image
 FROM alpine:3.18.4
 
-# Install curl, bash, and cron
-RUN apk add --no-cache curl bash dcron
+# Update package lists and install inotify-tools
+RUN apk add --no-cache inotify-tools curl
 
-# Set the directory for the operations
-WORKDIR /app
+# Copy the monitor script into the image
+COPY watcher.sh /watcher.sh
 
-# Copy the script into the container
-COPY watcher.sh .
-# Make sure the script is executable
-RUN chmod +x watcher.sh
+# Make the script executable
+RUN chmod +x /watcher.sh
 
-# Setup the cron job to run the script every minute
-RUN echo '* * * * * /app/watcher.sh' > /etc/crontabs/root
-
-# Start the cron daemon
-CMD ["crond", "-f", "-d", "8"]
+# Set the entrypoint to the script
+ENTRYPOINT ["/watcher.sh"]

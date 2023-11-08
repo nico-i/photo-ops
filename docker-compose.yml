@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  watcher-service:
+    build:
+      context: ./services/watcher-service
+    environment:
+      - MONITORED_DIR=${MONITORED_DIR}
+      - UPLOAD_URL=${UPLOAD_URL}
+    volumes:
+      - ${MONITORED_DIR}:/monitored
+  imaginary:
+    build: https://github.com/h2non/imaginary.git
+    command: -mount /editted
+    environment:
+      - PORT=9000
+      - IMAGINARY_VERSION=${IMAGINARY_VERSION}
+    ports:
+      - "9000:9000"
+    volumes:
+      - ${GENERATED_DIR}:/editted
