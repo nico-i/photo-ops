@@ -1,5 +1,6 @@
 go 1.21.4
 
 use (
+	./services/motif-service
 	./shared/go-shared
 )

@@ -1,0 +1,4 @@
+version: v1
+name: buf.build/nico-i/photo-ops
+deps:
+  - buf.build/googleapis/googleapis
