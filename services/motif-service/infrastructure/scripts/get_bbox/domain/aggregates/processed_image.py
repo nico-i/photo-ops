@@ -10,6 +10,9 @@ class ProcessedImage:
         # Open the image file
         with open(input_path, 'rb') as file:
             input_image = file.read()
+            
+        # Get file name
+        self.file_name = input_path.split('/')[-1]
 
         # Remove background
         bgless_image = remove(input_image)

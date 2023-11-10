@@ -18,3 +18,10 @@ This service depends on the following repositories:
 - `Python`
   - [rembg](https://github.com/danielgatis/rembg#rembg) — removal of an image's background
   - [Pillow](https://github.com/python-pillow/Pillow#pillow) — denoising, bounding box calculation and drawing
+
+## Credits
+
+Example images used in the tests are from [Unsplash](https://unsplash.com/).
+
+- [Object example photo](./docs/example/obj.jpg) by <a href="https://unsplash.com/@atulvi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Atul Vinayak</a> on <a href="https://unsplash.com/photos/text-9ZvjWPDb0fE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  

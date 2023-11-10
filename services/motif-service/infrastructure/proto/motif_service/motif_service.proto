@@ -25,8 +25,9 @@ message ImageRequest {
       // The image file encoded in base64.
       string base64 = 2;
     }
-    // Whether to save a debug image and add it to the response.
-    bool debug = 3;
+    // If set, the service will save the image used for bounding box detection in the specified directory.
+    // The format of name of the outputted image is <input_image>_debug.png
+    string debug_dir_path = 3;
 }
 
 // The response message containing bounding box coordinates.

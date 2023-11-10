@@ -89,9 +89,9 @@
           "type": "string",
           "description": "The image file encoded in base64."
         },
-        "debug": {
-          "type": "boolean",
-          "description": "Whether to save a debug image and add it to the response."
+        "debugDirPath": {
+          "type": "string",
+          "description": "If set, the service will save the image used for bounding box detection in the specified directory."
         }
       },
       "description": "The request message containing the image file path."
