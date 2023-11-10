@@ -74,9 +74,9 @@ func (s *MotifServerImpl) GetBoundingBox(ctx context.Context, req *gen.ImageRequ
 		}
 	}
 
-	args := []string{"../../infrastructure/scripts/get_bbox", imgPath}
+	args := []string{"../../infrastructure/scripts/get_motif_bbox", imgPath}
 
-	if debugDirPath != ""{
+	if debugDirPath != "" {
 		args = append(args, "--debug", debugDirPath)
 	}
 
@@ -95,6 +95,12 @@ func (s *MotifServerImpl) GetBoundingBox(ctx context.Context, req *gen.ImageRequ
 	// parse out bytes as JSON
 	res := gen.BoundingBoxResponse{}
 	json.Unmarshal(out.Bytes(), &res)
+
+	// remove tmp
+	err = os.Remove(tmpImgPath)
+	if err != nil {
+		log.Fatal("error during the deletion of temp files: ", err)
+	}
 
 	return &res, nil
 }

@@ -3,7 +3,7 @@ import os
 from PIL import Image, ImageDraw
 from domain.aggregates.processed_image import ProcessedImage
 
-def get_bbox(input_path, debug_dir_path = None):
+def get_motif_bbox(input_path, debug_dir_path = None):
     processed_img = ProcessedImage(input_path)
         
     if debug_dir_path is not None:

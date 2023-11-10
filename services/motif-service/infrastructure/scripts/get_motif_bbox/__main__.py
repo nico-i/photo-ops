@@ -2,7 +2,7 @@
 import argparse
 
 from domain.aggregates.processed_image import ProcessedImage
-from application.services.bbox_service import get_bbox
+from application.services.bbox_service import get_motif_bbox
 def main():
     parser = argparse.ArgumentParser(description='Remove image background and/or draw bounding box on the original image.')
     parser.add_argument('input_path', type=str, help='Path to the input image.', metavar='input_path')
@@ -10,7 +10,7 @@ def main():
 
     args = parser.parse_args()
 
-    bbox = get_bbox(args.input_path, args.debug)
+    bbox = get_motif_bbox(args.input_path, args.debug)
 
     print(bbox)
 

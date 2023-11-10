@@ -1,13 +1,6 @@
 # motif-service
 
-This service provides the motif i.e. the main subject of a given image via an http or gRPC calls the user is able to either upload or specify the local path of an image to be processed.
-
-Depending on the type of call the service can have the following outputs:
-
-- a PNG with the background of the input image removed and only the main subject (motif) of the image remaining
-- the X- and Y-coordinates of the corners of a bounding box encasing the motif
-- the input image with the motif highlighted by a bounding box
-- any combination of the above
+This service provides a bounding box for the motif i.e. the main subject of a given image via an http or gRPC calls.
 
 ## Dependencies
 
@@ -23,5 +16,5 @@ This service depends on the following repositories:
 
 Example images used in the tests are from [Unsplash](https://unsplash.com/).
 
-- [Object example photo](./docs/example/obj.jpg) by <a href="https://unsplash.com/@atulvi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Atul Vinayak</a> on <a href="https://unsplash.com/photos/text-9ZvjWPDb0fE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+- [Object example photo](./docs/example/obj.jpg) by [Atul Vinayak](https://unsplash.com/@atulvi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/text-9ZvjWPDb0fE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
   
