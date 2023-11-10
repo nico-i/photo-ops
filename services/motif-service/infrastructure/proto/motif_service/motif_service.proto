@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package motif;
+
+option go_package = "github.com/nico-i/photo-ops/services/motif/proto";
+
+import "google/api/annotations.proto";
+
+// The motif service definition.
+service MotifService {
+  // Returns bounding box information for the subject in the image.
+  rpc GetBoundingBox (ImageRequest) returns (BoundingBoxResponse) {
+    option (google.api.http) = {
+      post: "/v1/bbox"
+      body: "*"
+    };
+  }
+}
+
+// The request message containing the image file path.
+message ImageRequest {
+   oneof image {
+      // The image file path.
+      string path = 1;
+      // The image file encoded in base64.
+      string base64 = 2;
+    }
+    // Whether to save a debug image and add it to the response.
+    bool debug = 3;
+}
+
+// The response message containing bounding box coordinates.
+message BoundingBoxResponse {
+  // The x pixel coordinate of the top left corner of the bounding box.
+  int32 x = 1;
+  // The y pixel coordinate of the top left corner of the bounding box.
+  int32 y = 2;
+  // The width of the bounding box.
+  int32 width = 3;
+  // The height of the bounding box.
+  int32 height = 4;
+}

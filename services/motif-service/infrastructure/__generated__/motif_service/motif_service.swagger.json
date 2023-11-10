@@ -1,0 +1,128 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "motif_service/motif_service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "MotifService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/bbox": {
+      "post": {
+        "summary": "Returns bounding box information for the subject in the image.",
+        "operationId": "MotifService_GetBoundingBox",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/motifBoundingBoxResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "The request message containing the image file path.",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/motifImageRequest"
+            }
+          }
+        ],
+        "tags": [
+          "MotifService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "motifBoundingBoxResponse": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The x pixel coordinate of the top left corner of the bounding box."
+        },
+        "y": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The y pixel coordinate of the top left corner of the bounding box."
+        },
+        "width": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The width of the bounding box."
+        },
+        "height": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The height of the bounding box."
+        }
+      },
+      "description": "The response message containing bounding box coordinates."
+    },
+    "motifImageRequest": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "The image file path."
+        },
+        "base64": {
+          "type": "string",
+          "description": "The image file encoded in base64."
+        },
+        "debug": {
+          "type": "boolean",
+          "description": "Whether to save a debug image and add it to the response."
+        }
+      },
+      "description": "The request message containing the image file path."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}
