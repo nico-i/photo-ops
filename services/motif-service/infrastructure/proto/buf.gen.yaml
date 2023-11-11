@@ -1,20 +1,24 @@
 version: v1
+managed:
+  enabled: true
 plugins:
   # Generate structs for protocol buffer definition
-  - plugin: buf.build/protocolbuffers/go:v1.31.0
+  - plugin: go
     out: ../__generated__/
     opt:
       - paths=source_relative
   # Generate gRPC stubs
-  - plugin: buf.build/grpc/go:v1.3.0
+  - plugin: go-grpc
     out: ../__generated__/
     opt:
       - paths=source_relative
   # Generate gRPC HTTP Gateway
-  - plugin: buf.build/grpc-ecosystem/gateway:v2.16.2
+  - plugin: grpc-gateway
     out: ../__generated__/
     opt:
       - paths=source_relative
   # Generate OpenAPI
-  - plugin: buf.build/grpc-ecosystem/openapiv2:v2.16.2
-    out: ../__generated__/
+  - name: openapiv2
+    out: ../../docs/openapi/
+    opt:
+      - fqn_for_openapi_name=true,include_package_in_tags=true

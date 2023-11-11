@@ -43,11 +43,7 @@ func (s *MotifServerImpl) GetBoundingBox(ctx context.Context, req *gen.ImageRequ
 		if err != nil {
 			return nil, fmt.Errorf("error in decoding base64 string: %w", err)
 		}
-
-		if !strings.HasPrefix(string(decodedBytes), "\xff\xd8\xff") {
-			return nil, fmt.Errorf("image is not of type jpg")
-		}
-
+		
 		absoluteFilePath, err := filepath.Abs(tmpImgPath)
 		if err != nil {
 			return nil, fmt.Errorf("error in getting absolute file path: %w", err)
@@ -67,10 +63,6 @@ func (s *MotifServerImpl) GetBoundingBox(ctx context.Context, req *gen.ImageRequ
 		// check if file exists
 		if _, err := os.Stat(imgPath); os.IsNotExist(err) {
 			return nil, fmt.Errorf("file does not exist")
-		}
-		// check if file is of type jpg
-		if !strings.HasSuffix(imgPath, ".jpg") {
-			return nil, fmt.Errorf("file is not of type jpg")
 		}
 	}
 

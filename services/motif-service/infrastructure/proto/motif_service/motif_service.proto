@@ -5,6 +5,8 @@ package motif;
 option go_package = "github.com/nico-i/photo-ops/services/motif/proto";
 
 import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
 
 // The motif service definition.
 service MotifService {
@@ -17,27 +19,46 @@ service MotifService {
   }
 }
 
-// The request message containing the image file path.
 message ImageRequest {
    oneof image {
-      // The image file path.
-      string path = 1;
-      // The image file encoded in base64.
-      string base64 = 2;
+      string path = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The path on the server to the image file on the server."
+        format: "string",
+        example: "\"/home/user/image.jpg\""
+      }];
+      string base64 = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The image file encoded in base64."
+        format: "base64",
+        example: "\"iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC\""
+      }];
     }
-    // If set, the service will save the image used for bounding box detection in the specified directory.
-    // The format of name of the outputted image is <input_image>_debug.png
-    string debug_dir_path = 3;
+    string debug_dir_path = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The path on the server to the directory where the debug image will be saved. Format of output file: <input_image>_debug.png"
+      format: "string",
+      example: "\"/home/user/debug/\""
+    }];
 }
 
 // The response message containing bounding box coordinates.
 message BoundingBoxResponse {
-  // The x pixel coordinate of the top left corner of the bounding box.
-  int32 x = 1;
-  // The y pixel coordinate of the top left corner of the bounding box.
-  int32 y = 2;
-  // The width of the bounding box.
-  int32 width = 3;
-  // The height of the bounding box.
-  int32 height = 4;
+  int32 x = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "The x pixel coordinate of the top left corner of the bounding box."
+    format: "int32",
+    example: "100"
+  }];
+  int32 y = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "The y pixel coordinate of the top left corner of the bounding box."
+    format: "int32",
+    example: "100"
+  }];
+  int32 width = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "The width of the bounding box."
+    format: "int32",
+    example: "100"
+  }];
+  int32 height = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "The height of the bounding box."
+    format: "int32",
+    example: "100"
+  }];
 }
