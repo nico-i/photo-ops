@@ -8,6 +8,11 @@ WORKDIR /motif-service
 # Copy the Go service and Python scripts into the container
 COPY . .
 
+# Install opencv dependencies
+RUN apt-get update && \
+    apt-get install ffmpeg libsm6 libxext6 -y && \
+    apt-get clean
+    
 # Upgrade pip
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
