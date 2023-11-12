@@ -22,12 +22,16 @@ class ProcessedImage:
         
         # Convert to numpy array for morphological operations
         processed_np = np.array(processed_img)
+        
+        # Threshold the image to remove pixels that are not fully opaque
+        threshold = 150  # Adjust this threshold as needed
+        processed_np[processed_np < threshold] = 0  # Set pixels below the threshold to 0 (black)
 
         # Assume the alpha channel is the 4th channel
         alpha_channel = processed_np[:, :, 3]
 
         # Perform noise reduction on the alpha channel
-        cleaned_alpha_channel = self.__remove_noise(alpha_channel)
+        cleaned_alpha_channel = self.__remove_noise(alpha_channel, (10,10), 1)
 
         # Replace the alpha channel in the processed image
         processed_np[:, :, 3] = cleaned_alpha_channel
@@ -44,7 +48,7 @@ class ProcessedImage:
         """
         kernel = cv2.getStructuringElement(cv2.MORPH_RECT, kernel_size)
         # Use 'closing' morphological operation (dilation followed by erosion) to remove noise.
-        closing = cv2.morphologyEx(image_array, cv2.MORPH_CLOSE, kernel, iterations=iterations)
-        return closing
+        opening = cv2.morphologyEx(image_array, cv2.MORPH_OPEN, kernel, iterations)
+        return opening
     
     

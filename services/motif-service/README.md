@@ -2,6 +2,17 @@
 
 This service provides a bounding box for the motif i.e. the main subject of a given image via an http or gRPC calls.
 
+By using the [rembg](https://github.com/danielgatis/rembg#rembg) library the service takes an input image and removes its background.
+After denoising the result with convolutional filters, the service calculates the bounding box of the main subject and returns its information in the JSON format.
+
+## Examples
+
+| Input                                      | Debug Image                                       | Output                                              |
+| ------------------------------------------ | ------------------------------------------------- | --------------------------------------------------- |
+| ![Input image](./docs/examples/obj.jpg)    | ![Output image](./docs/examples/obj_debug.png)    | `{"x": 415,"y": 97,"width": 310,"height": 569}`     |
+| ![Input image](./docs/examples/person.jpg) | ![Output image](./docs/examples/person_debug.png) | `{"x": 426, "y": 119, "width": 288, "height": 540}` |
+| ![Input image](./docs/examples/animal.jpg) | ![Output image](./docs/examples/animal_debug.png) | `{"x": 176, "y": 63, "width": 726, "height": 656}`  |
+
 ## Dependencies
 
 This service depends on the following repositories:
@@ -16,5 +27,5 @@ This service depends on the following repositories:
 
 Example images used in the tests are from [Unsplash](https://unsplash.com/):
 
-- [Object example photo](./docs/example/obj.jpg) by [Atul Vinayak](https://unsplash.com/@atulvi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/text-9ZvjWPDb0fE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
-  
+- [Object example](./docs/examples/obj.jpg) by [Atul Vinayak](https://unsplash.com/@atulvi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+- [Person example](./docs/examples/person.jpg) by [Isabela Drasovean](https://unsplash.com/@isabeladrasovean?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
