@@ -17,8 +17,8 @@ import (
 var (
 	// command-line options:
 	// gRPC server endpoint
-	grpcServerEndpoint = flag.String("grpc-server-endpoint", "localhost:9000", "gRPC server endpoint")
-	port               = flag.String("port", "8080", "port to listen on")
+	grpcServerEndpoint = flag.String("serv-p", "localhost:9000", "gRPC server endpoint")
+	port               = flag.String("p", "8080", "port to listen on")
 )
 
 func run() error {
@@ -30,11 +30,10 @@ func run() error {
 	// Note: Make sure the gRPC server is running properly and accessible
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
-	err := gw.RegisterMotifServiceHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts)
+	err := gw.RegisterMotifServiceHandlerFromEndpoint(ctx, mux, fmt.Sprintf(":%s", *grpcServerEndpoint), opts)
 	if err != nil {
 		return err
 	}
-
 	// Start HTTP server (and proxy calls to gRPC server endpoint)
 	return http.ListenAndServe(fmt.Sprintf(":%s", *port), mux)
 }

@@ -1,28 +1,19 @@
-package main
+package application
 
 import (
 	"bytes"
 	"context"
 	"encoding/base64"
 	"encoding/json"
-	"flag"
 	"fmt"
 	"log"
-	"net"
 	"os"
 	"os/exec"
 	"path/filepath"
+	"runtime"
 	"strings"
 
-	// importing generated stubs
 	gen "github.com/nico-i/photo-ops/services/motif-service/infrastructure/__generated__/motif_service"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/reflection"
-)
-
-var (
-	// command-line options:
-	port = flag.String("port", "9000", "port to listen on")
 )
 
 const (
@@ -43,7 +34,7 @@ func (s *MotifServerImpl) GetBoundingBox(ctx context.Context, req *gen.ImageRequ
 		if err != nil {
 			return nil, fmt.Errorf("error in decoding base64 string: %w", err)
 		}
-		
+
 		absoluteFilePath, err := filepath.Abs(tmpImgPath)
 		if err != nil {
 			return nil, fmt.Errorf("error in getting absolute file path: %w", err)
@@ -66,13 +57,13 @@ func (s *MotifServerImpl) GetBoundingBox(ctx context.Context, req *gen.ImageRequ
 		}
 	}
 
-	args := []string{"../../infrastructure/scripts/get_motif_bbox", imgPath}
+	_, b, _, _ := runtime.Caller(0)
+	workDirPath := filepath.Dir(b)
+	args := []string{fmt.Sprintf("%s/../../infrastructure/scripts/get_motif_bbox", workDirPath), imgPath}
 
 	if debugDirPath != "" {
 		args = append(args, "--debug", debugDirPath)
 	}
-
-	log.Println("executing python script with args: ", args)
 
 	getBBoxScriptCmd := exec.Command("python", args...)
 
@@ -81,36 +72,20 @@ func (s *MotifServerImpl) GetBoundingBox(ctx context.Context, req *gen.ImageRequ
 
 	err := getBBoxScriptCmd.Run()
 	if err != nil {
-		log.Fatal("error during execution of python script: ", out.String(), err)
+		return nil, fmt.Errorf("error in running get_motif_bbox script: %w", err)
 	}
 
 	// parse out bytes as JSON
 	res := gen.BoundingBoxResponse{}
 	json.Unmarshal(out.Bytes(), &res)
 
-	// remove tmp
-	err = os.Remove(tmpImgPath)
-	if err != nil {
-		log.Fatal("error during the deletion of temp files: ", err)
+	// remove tmp if it exists
+	if _, err := os.Stat(tmpImgPath); !os.IsNotExist(err) {
+		err = os.Remove(tmpImgPath)
+		if err != nil {
+			log.Fatal("error during the deletion of temp files: ", err)
+		}
 	}
 
 	return &res, nil
-}
-
-func main() {
-	// create new gRPC server
-	server := grpc.NewServer()
-	// register the GreeterServerImpl on the gRPC server
-	gen.RegisterMotifServiceServer(server, &MotifServerImpl{})
-	// Register reflection service on gRPC server.
-	reflection.Register(server)
-	// start listening on port :8080 for a tcp connection
-	if l, err := net.Listen("tcp", fmt.Sprintf(":%s", *port)); err != nil {
-		log.Fatal(fmt.Sprintf("error in listening on port :%s", *port), err)
-	} else {
-		// the gRPC server
-		if err := server.Serve(l); err != nil {
-			log.Fatal("unable to start server", err)
-		}
-	}
 }

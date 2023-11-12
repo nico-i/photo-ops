@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  grpc-server:
+    build:
+      dockerfile: server.Dockerfile
+    environment:
+      - SERVER_PORT=9000
+    ports:
+      - "9000:9000"
+  http-gateway:
+    build:
+      dockerfile: gateway.Dockerfile
+    environment:
+      - GATEWAY_PORT=8080
+      - SERVER_PORT=9000
+    ports:
+      - "8080:8080"

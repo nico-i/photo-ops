@@ -14,7 +14,7 @@ This service depends on the following repositories:
 
 ## Credits
 
-Example images used in the tests are from [Unsplash](https://unsplash.com/).
+Example images used in the tests are from [Unsplash](https://unsplash.com/):
 
 - [Object example photo](./docs/example/obj.jpg) by [Atul Vinayak](https://unsplash.com/@atulvi?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/text-9ZvjWPDb0fE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
   
