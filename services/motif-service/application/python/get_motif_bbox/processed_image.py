@@ -17,27 +17,23 @@ class ProcessedImage:
         # Remove background
         bgless_image = remove(input_image)
 
-        # Convert raw bytes to Image for processing
         processed_img = Image.open(io.BytesIO(bgless_image))
-        
-        # Convert to numpy array for morphological operations
         processed_np = np.array(processed_img)
         
         # Threshold the image to remove pixels that are not fully opaque
-        threshold = 150  # Adjust this threshold as needed
+        threshold = 150
         processed_np[processed_np < threshold] = 0  # Set pixels below the threshold to 0 (black)
 
         # Assume the alpha channel is the 4th channel
         alpha_channel = processed_np[:, :, 3]
 
-        # Perform noise reduction on the alpha channel
+        # denoise alpha channel
         cleaned_alpha_channel = self.__remove_noise(alpha_channel, (10,10), 1)
 
-        # Replace the alpha channel in the processed image
+        # Replace the alpha channel in the noisy image
         processed_np[:, :, 3] = cleaned_alpha_channel
         cleaned_img = Image.fromarray(processed_np)
 
-        # Now, find the bounding box on the cleaned image
         self.bbox = find_bounding_box(cleaned_img)
         self.input_image = input_image
         self.bg_less_np_img = processed_np
