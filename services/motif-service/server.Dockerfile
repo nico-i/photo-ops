@@ -24,8 +24,8 @@ RUN go mod download
 RUN go build -o ./server presentation/grpc/server.go
 
 # Define an environment variable for the port (you can set a default if needed)
-ENV SERVER_PORT=9000
+ENV PORT=9000
 
 # Run the Go service
-CMD ./server -p "$SERVER_PORT"
+CMD ./server -p "$PORT"
 

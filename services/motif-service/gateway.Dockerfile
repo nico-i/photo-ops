@@ -13,8 +13,8 @@ RUN go mod download
 RUN go build -o ./gateway presentation/http/gateway.go
 
 # Define an environment variable for the port and the grpc server port
-ENV GATEWAY_PORT=8080
-ENV SERVER_PORT=9000
+ENV PORT=8080
+ENV GRPC_SERV_ADDR=grpc-server:9000
 
 # Run the Go service
-CMD ./gateway -p "$GATEWAY_PORT" -serv-p "$SERVER_PORT"
+CMD ./gateway -p "$PORT" -server "$GRPC_SERV_ADDR"
