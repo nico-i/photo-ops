@@ -10,5 +10,7 @@ COPY watcher.sh /watcher.sh
 # Make the script executable
 RUN chmod +x /watcher.sh
 
+ENV MONITORED_DIR=./images
+
 # Set the entrypoint to the script
 ENTRYPOINT ["/watcher.sh"]

@@ -4,10 +4,10 @@ services:
     build:
       context: ./services/watcher-service
     environment:
-      - MONITORED_DIR=${MONITORED_DIR}
+      - MONITORED_DIR=${IMAGES_DIR}
       - UPLOAD_URL=${UPLOAD_URL}
     volumes:
-      - ${MONITORED_DIR}:/monitored
+      - ${IMAGES_DIR}:/images
   imaginary:
     build: https://github.com/h2non/imaginary.git
     command: -mount /editted
@@ -17,4 +17,4 @@ services:
     ports:
       - "9000:9000"
     volumes:
-      - ${GENERATED_DIR}:/editted
+      - ${IMAGES_DIR}:/images

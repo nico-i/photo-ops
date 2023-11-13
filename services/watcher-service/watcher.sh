@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Directory to be monitored
-MONITORED_DIR="/monitored"
-
 # Check if MONITORED_DIR is set in the environment, if not exit with an error
 if [ -z "$MONITORED_DIR" ]; then
     echo "Error: The environment variable MONITORED_DIR is not set." >&2
