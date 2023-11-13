@@ -12,12 +12,10 @@ class ProcessedImage:
         with open(input_path, 'rb') as file:
             input_image = file.read()
             
-        self.base_name = os.path.basename(input_path)
-
         # Remove background
-        bgless_image = remove(input_image)
+        debug_img = remove(input_image)
 
-        processed_img = Image.open(io.BytesIO(bgless_image))
+        processed_img = Image.open(io.BytesIO(debug_img))
         processed_np = np.array(processed_img)
         
         # Threshold the image to remove pixels that are not fully opaque
@@ -35,8 +33,8 @@ class ProcessedImage:
         cleaned_img = Image.fromarray(processed_np)
 
         self.bbox = find_bounding_box(cleaned_img)
-        self.input_image = input_image
-        self.bg_less_np_img = processed_np
+        self.base_name = os.path.basename(input_path)
+        self.debug_img_arr = processed_np
         
     def __remove_noise(self,image_array, kernel_size=(5, 5), iterations=1):
         """

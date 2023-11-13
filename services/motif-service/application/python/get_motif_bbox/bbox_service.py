@@ -12,8 +12,8 @@ def get_motif_bbox(input_path, debug_dir_path = None):
             os.makedirs(debug_dir_path)
             print(f"Debug directory created at {debug_dir_path}")
         
-        bg_less_img = Image.fromarray(processed_img.bg_less_np_img)
-        draw = ImageDraw.Draw(bg_less_img)
+        debug_img = Image.fromarray(processed_img.debug_img_arr)
+        draw = ImageDraw.Draw(debug_img)
         
         bbox_top_left = (processed_img.bbox.x, processed_img.bbox.y)
         bbox_bottom_right = (processed_img.bbox.x + processed_img.bbox.width, processed_img.bbox.y + processed_img.bbox.height)
@@ -24,6 +24,6 @@ def get_motif_bbox(input_path, debug_dir_path = None):
         output_path = os.path.join(debug_dir_path, f"{filename}_debug.png")
         
         print(f"Saving debug image to {output_path}")
-        bg_less_img.save(output_path)
+        debug_img.save(output_path)
 
     return str(processed_img.bbox)
