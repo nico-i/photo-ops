@@ -1,4 +1,4 @@
-FROM golang:1.21.4-alpine3.18
+FROM golang:1.22.3-alpine3.18
 
 # Set the working directory in the container
 WORKDIR /motif-service
