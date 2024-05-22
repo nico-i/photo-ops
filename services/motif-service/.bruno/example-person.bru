@@ -1,0 +1,17 @@
+meta {
+  name: example-person
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8080/v1/bbox
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "path": "../../docs/examples/obj.jpg"
+  }
+}
