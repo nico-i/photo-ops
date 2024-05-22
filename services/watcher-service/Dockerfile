@@ -1,5 +1,5 @@
 # Use the Alpine base image
-FROM alpine:3.18.4
+FROM alpine:3.20.0
 
 # Update package lists and install inotify-tools
 RUN apk add --no-cache inotify-tools curl
