@@ -33,5 +33,5 @@ scikit-image==0.22.0
 scipy==1.11.3
 sympy==1.12
 tifffile==2023.9.26
-tqdm==4.66.1
+tqdm==4.66.4
 urllib3==2.0.7
