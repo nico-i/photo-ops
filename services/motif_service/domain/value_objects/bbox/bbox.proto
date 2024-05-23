@@ -1,11 +1,10 @@
 syntax = "proto3";
 
-package domain.bounding_box;
+package domain.value_objects.bbox;
 
-import "google/api/annotations.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
-message BoundingBox {
+message BBox {
 	int32 x = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
 		description: "The x pixel coordinate of the top left corner of the bounding box."
 		format: "int32",

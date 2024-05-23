@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package application.bbox;
+
+option go_package = "github.com/nico-i/photo-ops/services/motif/proto";
+
+import "google/api/annotations.proto";
+import "domain/value_objects/image/image.proto";
+import "domain/value_objects/bbox/bbox.proto";
+
+service BBoxService {
+	// Returns bounding box information for the subject in the image.
+	rpc GetBBox (domain.value_objects.image.Image) returns (domain.value_objects.bbox.BBox) {
+		option (google.api.http) = {
+			post: "/v1/bbox-local"
+			body: "*"
+		};
+	}
+
+		// Returns the image used to generate the bounding box with the bounding box drawn on it.
+	rpc GetBBoxDebug (domain.value_objects.image.Image) returns (domain.value_objects.bbox.BBox) {
+		option (google.api.http) = {
+			post: "/v1/bbox-local/debug"
+			body: "*"
+		};
+	}
+}
