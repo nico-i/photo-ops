@@ -13,7 +13,7 @@ import (
 	"google.golang.org/grpc/grpclog"
 	"google.golang.org/grpc/status"
 
-	gw "github.com/nico-i/photo-ops/services/motif-service/infrastructure/__generated__/motif_service"
+	gw "github.com/nico-i/photo-ops/services/motif-service/src/__generated__/motif_service"
 )
 
 var (

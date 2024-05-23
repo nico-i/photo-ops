@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"net"
 
-	app "github.com/nico-i/photo-ops/services/motif-service/application"
-	gen "github.com/nico-i/photo-ops/services/motif-service/infrastructure/__generated__/motif_service"
+	gen "github.com/nico-i/photo-ops/services/motif-service/src/__generated__/motif_service"
+	app "github.com/nico-i/photo-ops/services/motif-service/src/application"
 
 	// importing generated stubs
 	"google.golang.org/grpc"

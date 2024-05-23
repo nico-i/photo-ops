@@ -15,7 +15,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	gen "github.com/nico-i/photo-ops/services/motif-service/infrastructure/__generated__/motif_service"
+	gen "github.com/nico-i/photo-ops/services/motif-service/src/__generated__/motif_service"
 )
 
 const (
