@@ -6,7 +6,7 @@ coloredlogs==15.0.1
 flatbuffers==23.5.26
 humanfriendly==10.0
 idna==3.7
-imageio==2.32.0
+imageio==2.34.1
 jsonschema==4.19.2
 jsonschema-specifications==2023.7.1
 lazy_loader==0.3
