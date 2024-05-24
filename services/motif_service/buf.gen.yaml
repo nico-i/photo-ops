@@ -1,29 +1,15 @@
-version: v1
+version: v2
 managed:
   enabled: true
+  disable:
+    - module: buf.build/googleapis/googleapis
+      file_option: go_package_prefix
 plugins:
-  # Generate python types based on the protocol buffer definition
-  - plugin: python
-    out: ./__generated__/
-    opt:
-      - paths=source_relative
-  # Generate structs for protocol buffer definition
-  - plugin: go
-    out: ./__generated__/
-    opt:
-      - paths=source_relative
-  # Generate gRPC stubs
-  - plugin: go-grpc
-    out: ./__generated__/
-    opt:
-      - paths=source_relative
-  # Generate gRPC HTTP Gateway
-  - plugin: grpc-gateway
-    out: ./__generated__/
-    opt:
-      - paths=source_relative
-  # Generate OpenAPI
-  - name: openapiv2
-    out: docs/openapi/
-    opt:
-      - fqn_for_openapi_name=true,include_package_in_tags=true
+  - remote: buf.build/protocolbuffers/python:v27.0
+    out: ./src/infrastructure/__generated__/python
+  - remote: buf.build/protocolbuffers/pyi
+    out: ./src/infrastructure/__generated__/python
+  - remote: buf.build/grpc/python:v1.64.0
+    out: ./src/infrastructure/__generated__/python
+inputs:
+  - directory: ./src/infrastructure/proto/v1

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package domain.value_objects;
+
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "github.com/nico-i/photo-ops/services/motif_service/domain/value_objects";
+
+message BBox {
+	int32 x = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+		description: "The x pixel coordinate of the top left corner of the bounding box."
+		format: "int32",
+		example: "100"
+	}];
+	int32 y = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+		description: "The y pixel coordinate of the top left corner of the bounding box."
+		format: "int32",
+		example: "100"
+	}];
+	int32 width = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+		description: "The width of the bounding box."
+		format: "int32",
+		example: "100"
+	}];
+	int32 height = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+		description: "The height of the bounding box."
+		format: "int32",
+		example: "100"
+	}];
+}

@@ -2,8 +2,9 @@
 
 This service provides a bounding box for the motif i.e. the main subject of a given image via an http or gRPC calls.
 
-By using the [rembg](https://github.com/danielgatis/rembg#rembg) library the service takes an input image and removes its background.
-After denoising the result with convolutional filters, the service calculates the bounding box of the main subject and returns its information in the JSON format.
+By using the [rembg](https://github.com/danielgatis/rembg#rembg) library the service takes an input image and removes its background and outputs a mask.
+Based on said mask, the service calculates the bounding box of the main subject and returns its information in the JSON format.
+Optionally, the service can also return a debug image with the bounding box drawn on it.
 
 ## Examples
 
