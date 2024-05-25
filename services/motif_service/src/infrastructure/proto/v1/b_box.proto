@@ -54,7 +54,7 @@ service BBoxService {
 	// Returns bounding box information for the subject in the image.
 	rpc get_b_box (GetBBoxRequest) returns (GetBBoxResponse) {
 		option (google.api.http) = {
-			post: "/v1/bbox-local"
+			post: "/v1/bbox"
 			body: "*"
 		};
 	}
@@ -62,7 +62,7 @@ service BBoxService {
 	// Returns the image used to generate the bounding box with the bounding box drawn on it.
 	rpc get_b_box_debug (GetBBoxDebugRequest) returns (GetBBoxDebugResponse) {
 		option (google.api.http) = {
-			post: "/v1/bbox-local/debug"
+			post: "/v1/bbox/debug"
 			body: "*"
 		};
 	}

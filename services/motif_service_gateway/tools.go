@@ -3,8 +3,6 @@
 
 package tools
 
-// This files allows to import the tools as dependencies and have them managed by go mod.
-
 import (
 	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway"
 	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2"

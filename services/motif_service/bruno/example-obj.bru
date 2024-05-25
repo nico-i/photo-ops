@@ -5,13 +5,15 @@ meta {
 }
 
 post {
-  url: http://localhost:8080/v1/bbox
+  url: http://localhost:8081/v1/bbox
   body: json
   auth: none
 }
 
 body:json {
   {
-    "path": "../../docs/examples/person.jpg"
+    "image": {
+      "path": "../../services/motif_service/docs/examples/obj.jpg"
+    }
   }
 }
