@@ -1,0 +1,19 @@
+meta {
+  name: obj
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8081/v1/bbox/debug
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "image": {
+      "path": "../../services/motif_service/docs/examples/obj.jpg"
+    }
+  }
+}

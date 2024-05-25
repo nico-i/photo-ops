@@ -1,0 +1,19 @@
+meta {
+  name: animal
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8081/v1/bbox
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "image": {
+      "path": "../../services/motif_service/docs/examples/animal.jpg"
+    }
+  }
+}

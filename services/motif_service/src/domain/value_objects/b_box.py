@@ -1,3 +1,6 @@
+from src.infrastructure.__generated__.python.b_box_pb2 import BBoxDto
+
+
 class BBox:
     """
     Bounding box value object
@@ -26,3 +29,12 @@ class BBox:
             "width": self.width,
             "height": self.height
         }
+        
+    def to_dto(self) -> BBoxDto:
+        """
+        Convert the BBox object to BBoxDto object
+
+        Returns:
+            BBoxDto: BBoxDto object
+        """
+        return BBoxDto(self.x, self.y, self.width, self.height)
