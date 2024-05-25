@@ -37,4 +37,4 @@ class BBox:
         Returns:
             BBoxDto: BBoxDto object
         """
-        return BBoxDto(self.x, self.y, self.width, self.height)
+        return BBoxDto(x=self.x, y=self.y, width=self.width, height=self.height)
