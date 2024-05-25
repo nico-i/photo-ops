@@ -7,4 +7,5 @@ plugins:
   - remote: buf.build/grpc/python:v1.64.0
     out: ./src/infrastructure/__generated__/python
 inputs:
-  - directory: ./src/infrastructure/proto/v1
+  - directory: ./src/infrastructure/proto/
+  - directory: ../../shared/proto/

@@ -2,7 +2,7 @@ import base64
 
 import cv2
 import numpy as np
-from src.infrastructure.__generated__.python.b_box_pb2 import ImageDto
+from src.infrastructure.__generated__.python.messages.v1.image_dto_pb2 import ImageDto
 
 
 class Image:

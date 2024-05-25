@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/grpclog"
 
-	gw "github.com/nico-i/photo-ops/services/motif_service_gateway/infrastructure/__generated__/go"
+	gw "github.com/nico-i/photo-ops/services/motif_service_gateway/infrastructure/__generated__/go/v1"
 )
 
 var (

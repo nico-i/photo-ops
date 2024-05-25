@@ -1,6 +1,7 @@
 version: v2
 modules:
-  - path: services/motif_service/src/infrastructure/proto/v1
+  - path: services/motif_service/./src/infrastructure/proto/
+  - path: shared/proto/
 lint:
   use:
     - DEFAULT

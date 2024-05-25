@@ -1,4 +1,3 @@
-import cv2
 import numpy as np
 from rembg import new_session, remove
 from src.domain.value_objects.image import Image

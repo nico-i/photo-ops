@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import b_box_pb2 as b__box__pb2
+from v1 import b_box_service_pb2 as v1_dot_b__box__service__pb2
 
 
 class BBoxServiceStub(object):
@@ -16,14 +16,14 @@ class BBoxServiceStub(object):
             channel: A grpc.Channel.
         """
         self.get_b_box = channel.unary_unary(
-                '/v1.BBoxService/get_b_box',
-                request_serializer=b__box__pb2.GetBBoxRequest.SerializeToString,
-                response_deserializer=b__box__pb2.GetBBoxResponse.FromString,
+                '/motif_service.v1.BBoxService/get_b_box',
+                request_serializer=v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
+                response_deserializer=v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
                 _registered_method=True)
         self.get_b_box_debug = channel.unary_unary(
-                '/v1.BBoxService/get_b_box_debug',
-                request_serializer=b__box__pb2.GetBBoxDebugRequest.SerializeToString,
-                response_deserializer=b__box__pb2.GetBBoxDebugResponse.FromString,
+                '/motif_service.v1.BBoxService/get_b_box_debug',
+                request_serializer=v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
+                response_deserializer=v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
                 _registered_method=True)
 
 
@@ -50,19 +50,19 @@ def add_BBoxServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'get_b_box': grpc.unary_unary_rpc_method_handler(
                     servicer.get_b_box,
-                    request_deserializer=b__box__pb2.GetBBoxRequest.FromString,
-                    response_serializer=b__box__pb2.GetBBoxResponse.SerializeToString,
+                    request_deserializer=v1_dot_b__box__service__pb2.GetBBoxRequest.FromString,
+                    response_serializer=v1_dot_b__box__service__pb2.GetBBoxResponse.SerializeToString,
             ),
             'get_b_box_debug': grpc.unary_unary_rpc_method_handler(
                     servicer.get_b_box_debug,
-                    request_deserializer=b__box__pb2.GetBBoxDebugRequest.FromString,
-                    response_serializer=b__box__pb2.GetBBoxDebugResponse.SerializeToString,
+                    request_deserializer=v1_dot_b__box__service__pb2.GetBBoxDebugRequest.FromString,
+                    response_serializer=v1_dot_b__box__service__pb2.GetBBoxDebugResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'v1.BBoxService', rpc_method_handlers)
+            'motif_service.v1.BBoxService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('v1.BBoxService', rpc_method_handlers)
+    server.add_registered_method_handlers('motif_service.v1.BBoxService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -84,9 +84,9 @@ class BBoxService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/v1.BBoxService/get_b_box',
-            b__box__pb2.GetBBoxRequest.SerializeToString,
-            b__box__pb2.GetBBoxResponse.FromString,
+            '/motif_service.v1.BBoxService/get_b_box',
+            v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
+            v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -111,9 +111,9 @@ class BBoxService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/v1.BBoxService/get_b_box_debug',
-            b__box__pb2.GetBBoxDebugRequest.SerializeToString,
-            b__box__pb2.GetBBoxDebugResponse.FromString,
+            '/motif_service.v1.BBoxService/get_b_box_debug',
+            v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
+            v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
             options,
             channel_credentials,
             insecure,

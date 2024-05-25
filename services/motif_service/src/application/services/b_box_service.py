@@ -1,15 +1,14 @@
-from email.mime import base
-
 import cv2
 import numpy as np
 from grpc import RpcContext
 from src.application.services.image_service import ImageService
 from src.domain.value_objects.b_box import BBox
 from src.domain.value_objects.image import Image
-from src.infrastructure.__generated__.python.b_box_pb2 import (
-    Base64ImageDto, GetBBoxDebugRequest, GetBBoxDebugResponse, GetBBoxRequest,
-    GetBBoxResponse, ImageDto)
-from src.infrastructure.__generated__.python.b_box_pb2_grpc import \
+from src.infrastructure.__generated__.python.messages.v1.base64_image_dto_pb2 import \
+    Base64ImageDto
+from src.infrastructure.__generated__.python.v1.b_box_service_pb2 import (
+    GetBBoxDebugRequest, GetBBoxDebugResponse, GetBBoxRequest, GetBBoxResponse)
+from src.infrastructure.__generated__.python.v1.b_box_service_pb2_grpc import \
     BBoxServiceServicer
 
 

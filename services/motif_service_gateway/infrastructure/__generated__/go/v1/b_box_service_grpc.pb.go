@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             (unknown)
-// source: b_box.proto
+// source: v1/b_box_service.proto
 
-package motif_service
+package motif_servicev1
 
 import (
 	context "context"
@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	BBoxService_GetBBox_FullMethodName      = "/v1.BBoxService/get_b_box"
-	BBoxService_GetBBoxDebug_FullMethodName = "/v1.BBoxService/get_b_box_debug"
+	BBoxService_GetBBox_FullMethodName      = "/motif_service.v1.BBoxService/get_b_box"
+	BBoxService_GetBBoxDebug_FullMethodName = "/motif_service.v1.BBoxService/get_b_box_debug"
 )
 
 // BBoxServiceClient is the client API for BBoxService service.
@@ -133,7 +133,7 @@ func _BBoxService_GetBBoxDebug_Handler(srv interface{}, ctx context.Context, dec
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var BBoxService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "v1.BBoxService",
+	ServiceName: "motif_service.v1.BBoxService",
 	HandlerType: (*BBoxServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -146,5 +146,5 @@ var BBoxService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "b_box.proto",
+	Metadata: "v1/b_box_service.proto",
 }

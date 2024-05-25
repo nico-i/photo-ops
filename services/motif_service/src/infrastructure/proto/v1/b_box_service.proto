@@ -1,23 +1,10 @@
 syntax = "proto3";
 
-package v1;
+package motif_service.v1;
 
 import "google/api/annotations.proto";
-
-// Image to be processed by the BBoxService.
-message ImageDto {
-	oneof source {
-		// The path to the image file on the server.
-		string path = 1;
-		// The image encoded in base64.
-		Base64ImageDto base64_image = 2;
-	}
-}
-
-message Base64ImageDto {
-	// The image data encoded in base64.
-	string data = 1;
-}
+import "messages/v1/base64_image_dto.proto";
+import "messages/v1/image_dto.proto";
 
 // Bounding box to encapsulate the an object in an image.
 message BBoxDto {
@@ -33,11 +20,11 @@ message BBoxDto {
 
 
 message GetBBoxRequest {
-	ImageDto image = 1;
+	shared.messages.v1.ImageDto image = 1;
 }
 
 message GetBBoxDebugRequest {
-	ImageDto image = 1;
+	shared.messages.v1.ImageDto image = 1;
 }
 
 message GetBBoxResponse {
@@ -45,7 +32,7 @@ message GetBBoxResponse {
 }
 
 message GetBBoxDebugResponse {
-	Base64ImageDto image = 1;
+	shared.messages.v1.Base64ImageDto image = 1;
 }
 
 
