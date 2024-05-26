@@ -4,7 +4,7 @@ from concurrent import futures
 
 import grpc
 
-import services.motif_service.src.infrastructure.__generated__.python.v1.b_box_service_pb2_grpc as b_box_pb2_grpc
+import services.motif_service.src.infrastructure.__generated__.python.motif_service.v1.b_box_service_pb2_grpc as b_box_pb2_grpc
 from services.motif_service.src.application.services.b_box_service import \
     BBoxService
 from services.motif_service.src.application.services.image_service import \

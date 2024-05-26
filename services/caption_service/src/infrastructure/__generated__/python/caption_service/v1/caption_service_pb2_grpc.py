@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from v1 import caption_service_pb2 as v1_dot_caption__service__pb2
+from caption_service.v1 import caption_service_pb2 as caption__service_dot_v1_dot_caption__service__pb2
 
 
 class CaptionServiceStub(object):
@@ -17,8 +17,8 @@ class CaptionServiceStub(object):
         """
         self.get_caption = channel.unary_unary(
                 '/caption_service.v1.CaptionService/get_caption',
-                request_serializer=v1_dot_caption__service__pb2.GetCaptionRequest.SerializeToString,
-                response_deserializer=v1_dot_caption__service__pb2.GetCaptionResponse.FromString,
+                request_serializer=caption__service_dot_v1_dot_caption__service__pb2.GetCaptionRequest.SerializeToString,
+                response_deserializer=caption__service_dot_v1_dot_caption__service__pb2.GetCaptionResponse.FromString,
                 _registered_method=True)
 
 
@@ -38,8 +38,8 @@ def add_CaptionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'get_caption': grpc.unary_unary_rpc_method_handler(
                     servicer.get_caption,
-                    request_deserializer=v1_dot_caption__service__pb2.GetCaptionRequest.FromString,
-                    response_serializer=v1_dot_caption__service__pb2.GetCaptionResponse.SerializeToString,
+                    request_deserializer=caption__service_dot_v1_dot_caption__service__pb2.GetCaptionRequest.FromString,
+                    response_serializer=caption__service_dot_v1_dot_caption__service__pb2.GetCaptionResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -68,8 +68,8 @@ class CaptionService(object):
             request,
             target,
             '/caption_service.v1.CaptionService/get_caption',
-            v1_dot_caption__service__pb2.GetCaptionRequest.SerializeToString,
-            v1_dot_caption__service__pb2.GetCaptionResponse.FromString,
+            caption__service_dot_v1_dot_caption__service__pb2.GetCaptionRequest.SerializeToString,
+            caption__service_dot_v1_dot_caption__service__pb2.GetCaptionResponse.FromString,
             options,
             channel_credentials,
             insecure,

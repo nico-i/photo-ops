@@ -24,13 +24,14 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"messages/v1/base64_image_dto.proto\x12\x12shared.messages.v1\"$\n\x0e\x42\x61se64ImageDto\x12\x12\n\x04\x64\x61ta\x18\x01 \x01(\tR\x04\x64\x61tab\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\"messages/v1/base64_image_dto.proto\x12\x12shared.messages.v1\"$\n\x0e\x42\x61se64ImageDto\x12\x12\n\x04\x64\x61ta\x18\x01 \x01(\tR\x04\x64\x61taB\x97\x01\n\x16\x63om.shared.messages.v1B\x13\x42\x61se64ImageDtoProtoP\x01\xa2\x02\x03SMX\xaa\x02\x12Shared.Messages.V1\xca\x02\x12Shared\\Messages\\V1\xe2\x02\x1eShared\\Messages\\V1\\GPBMetadata\xea\x02\x14Shared::Messages::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'messages.v1.base64_image_dto_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
-  DESCRIPTOR._loaded_options = None
+  _globals['DESCRIPTOR']._loaded_options = None
+  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.shared.messages.v1B\023Base64ImageDtoProtoP\001\242\002\003SMX\252\002\022Shared.Messages.V1\312\002\022Shared\\Messages\\V1\342\002\036Shared\\Messages\\V1\\GPBMetadata\352\002\024Shared::Messages::V1'
   _globals['_BASE64IMAGEDTO']._serialized_start=58
   _globals['_BASE64IMAGEDTO']._serialized_end=94
 # @@protoc_insertion_point(module_scope)

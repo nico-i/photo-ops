@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from v1 import b_box_service_pb2 as v1_dot_b__box__service__pb2
+from motif_service.v1 import b_box_service_pb2 as motif__service_dot_v1_dot_b__box__service__pb2
 
 
 class BBoxServiceStub(object):
@@ -17,13 +17,13 @@ class BBoxServiceStub(object):
         """
         self.get_b_box = channel.unary_unary(
                 '/motif_service.v1.BBoxService/get_b_box',
-                request_serializer=v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
-                response_deserializer=v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
+                request_serializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
+                response_deserializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
                 _registered_method=True)
         self.get_b_box_debug = channel.unary_unary(
                 '/motif_service.v1.BBoxService/get_b_box_debug',
-                request_serializer=v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
-                response_deserializer=v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
+                request_serializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
+                response_deserializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
                 _registered_method=True)
 
 
@@ -50,13 +50,13 @@ def add_BBoxServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'get_b_box': grpc.unary_unary_rpc_method_handler(
                     servicer.get_b_box,
-                    request_deserializer=v1_dot_b__box__service__pb2.GetBBoxRequest.FromString,
-                    response_serializer=v1_dot_b__box__service__pb2.GetBBoxResponse.SerializeToString,
+                    request_deserializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxRequest.FromString,
+                    response_serializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxResponse.SerializeToString,
             ),
             'get_b_box_debug': grpc.unary_unary_rpc_method_handler(
                     servicer.get_b_box_debug,
-                    request_deserializer=v1_dot_b__box__service__pb2.GetBBoxDebugRequest.FromString,
-                    response_serializer=v1_dot_b__box__service__pb2.GetBBoxDebugResponse.SerializeToString,
+                    request_deserializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugRequest.FromString,
+                    response_serializer=motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -85,8 +85,8 @@ class BBoxService(object):
             request,
             target,
             '/motif_service.v1.BBoxService/get_b_box',
-            v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
-            v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
+            motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
+            motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -112,8 +112,8 @@ class BBoxService(object):
             request,
             target,
             '/motif_service.v1.BBoxService/get_b_box_debug',
-            v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
-            v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
+            motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
+            motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
             options,
             channel_credentials,
             insecure,

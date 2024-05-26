@@ -6,7 +6,7 @@ import grpc
 
 from services.caption_service.src.application.services.caption_service import \
     CaptionService
-from services.caption_service.src.infrastructure.__generated__.python.v1 import \
+from services.caption_service.src.infrastructure.__generated__.python.caption_service.v1 import \
     caption_service_pb2_grpc
 
 
