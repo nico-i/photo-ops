@@ -1,7 +1,7 @@
 from grpc import RpcContext
 from transformers import AutoModelForCausalLM, AutoProcessor
 
-from services.caption_service.domain.value_objects.caption import Caption
+from services.caption_service.src.domain.value_objects.caption import Caption
 from services.caption_service.src.infrastructure.__generated__.python.v1.caption_service_pb2 import (
     GetCaptionRequest, GetCaptionResponse)
 from services.caption_service.src.infrastructure.__generated__.python.v1.caption_service_pb2_grpc import \

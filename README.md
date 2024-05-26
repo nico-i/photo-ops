@@ -1,6 +1,8 @@
 # photo-ops
 A pipeline passing an image between different micro services to crop, caption, watermark, hashtagify and finally post it to social media.
 
+NOTE: Currently all models used are cpu based.
+
 ## Dependencies
 
 - [Imaginary](https://github.com/h2non/imaginary)
