@@ -25,7 +25,7 @@ plugins:
     out: go/__generated__/proto
     opt:
       - paths=source_relative
-  # dependencies
+  # Gateway dependencies
   - remote: buf.build/grpc/go
     out: go/__generated__/proto
     opt:
