@@ -10,11 +10,11 @@ from shared.python.domain.value_objects.image import Image
 
 
 class CaptionService(CaptionServiceServicer):
-    def __init__(self, caption_service):
+    def __init__(self):
         self.__processor = AutoProcessor.from_pretrained("microsoft/git-base-coco")
         self.__model = AutoModelForCausalLM.from_pretrained("microsoft/git-base-coco")
     
-    def GetCaption(self, request: GetCaptionRequest, context: RpcContext) -> GetCaptionResponse:
+    def get_caption(self, request: GetCaptionRequest, context: RpcContext) -> GetCaptionResponse:
         try:
             img = Image.from_local_path(request.image.path) if request.image.HasField('path') else Image.from_base64_string(request.image.base64_image.data)
         except Exception as e:
