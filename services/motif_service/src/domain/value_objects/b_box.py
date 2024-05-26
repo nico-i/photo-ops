@@ -1,4 +1,4 @@
-from services.motif_service.src.infrastructure.__generated__.python.motif_service.v1.b_box_service_pb2 import \
+from shared.python.__generated__.proto.services.motif_service.v1.b_box_service_pb2 import \
     BBoxDto
 
 

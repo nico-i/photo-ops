@@ -25,14 +25,14 @@ _sym_db = _symbol_database.Default()
 from messages.base64_image_dto.v1 import base64_image_dto_pb2 as messages_dot_base64__image__dto_dot_v1_dot_base64__image__dto__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%messages/image_dto/v1/image_dto.proto\x12\x1cshared.messages.image_dto.v1\x1a\x33messages/base64_image_dto/v1/base64_image_dto.proto\"\x84\x01\n\x08ImageDto\x12\x14\n\x04path\x18\x01 \x01(\tH\x00R\x04path\x12X\n\x0c\x62\x61se64_image\x18\x02 \x01(\x0b\x32\x33.shared.messages.base64_image_dto.v1.Base64ImageDtoH\x00R\x0b\x62\x61se64ImageB\x08\n\x06sourceB\xc3\x02\n com.shared.messages.image_dto.v1B\rImageDtoProtoP\x01Z\x80\x01github.com/nico-i/photo-ops/services/motif_service_gateway/src/infrastructure/__generated__/go/messages/image_dto/v1;image_dtov1\xa2\x02\x03SMI\xaa\x02\x1bShared.Messages.ImageDto.V1\xca\x02\x1bShared\\Messages\\ImageDto\\V1\xe2\x02\'Shared\\Messages\\ImageDto\\V1\\GPBMetadata\xea\x02\x1eShared::Messages::ImageDto::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%messages/image_dto/v1/image_dto.proto\x12\x1cshared.messages.image_dto.v1\x1a\x33messages/base64_image_dto/v1/base64_image_dto.proto\"\x84\x01\n\x08ImageDto\x12\x14\n\x04path\x18\x01 \x01(\tH\x00R\x04path\x12X\n\x0c\x62\x61se64_image\x18\x02 \x01(\x0b\x32\x33.shared.messages.base64_image_dto.v1.Base64ImageDtoH\x00R\x0b\x62\x61se64ImageB\x08\n\x06sourceB\x9d\x02\n com.shared.messages.image_dto.v1B\rImageDtoProtoP\x01Z[github.com/nico-i/photo-ops/shared/go/__generated__/proto/messages/image_dto/v1;image_dtov1\xa2\x02\x03SMI\xaa\x02\x1bShared.Messages.ImageDto.V1\xca\x02\x1bShared\\Messages\\ImageDto\\V1\xe2\x02\'Shared\\Messages\\ImageDto\\V1\\GPBMetadata\xea\x02\x1eShared::Messages::ImageDto::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'messages.image_dto.v1.image_dto_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n com.shared.messages.image_dto.v1B\rImageDtoProtoP\001Z\200\001github.com/nico-i/photo-ops/services/motif_service_gateway/src/infrastructure/__generated__/go/messages/image_dto/v1;image_dtov1\242\002\003SMI\252\002\033Shared.Messages.ImageDto.V1\312\002\033Shared\\Messages\\ImageDto\\V1\342\002\'Shared\\Messages\\ImageDto\\V1\\GPBMetadata\352\002\036Shared::Messages::ImageDto::V1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n com.shared.messages.image_dto.v1B\rImageDtoProtoP\001Z[github.com/nico-i/photo-ops/shared/go/__generated__/proto/messages/image_dto/v1;image_dtov1\242\002\003SMI\252\002\033Shared.Messages.ImageDto.V1\312\002\033Shared\\Messages\\ImageDto\\V1\342\002\'Shared\\Messages\\ImageDto\\V1\\GPBMetadata\352\002\036Shared::Messages::ImageDto::V1'
   _globals['_IMAGEDTO']._serialized_start=125
   _globals['_IMAGEDTO']._serialized_end=257
 # @@protoc_insertion_point(module_scope)

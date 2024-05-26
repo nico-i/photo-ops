@@ -6,7 +6,7 @@ managed:
     - file_option: go_package_prefix
       # <module_name>   : name in go.mod
       # <relative_path> : where generated code should be output
-      value: github.com/nico-i/photo-ops/services/motif_service_gateway/src/infrastructure/__generated__/go
+      value: github.com/nico-i/photo-ops/shared/go/__generated__/proto
   # Remove `disable` field if googleapis is not used
   disable:
     - module: buf.build/googleapis/googleapis

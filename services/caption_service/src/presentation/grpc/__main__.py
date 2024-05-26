@@ -4,10 +4,9 @@ from concurrent import futures
 
 import grpc
 
+import shared.python.__generated__.proto.services.caption_service.v1.caption_service_pb2_grpc as caption_service_pb2_grpc
 from services.caption_service.src.application.services.caption_service import \
     CaptionService
-from services.caption_service.src.infrastructure.__generated__.python.caption_service.v1 import \
-    caption_service_pb2_grpc
 
 
 def serve():

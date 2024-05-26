@@ -3,9 +3,9 @@ import logging
 from grpc import RpcContext
 from transformers import AutoModelForCausalLM, AutoProcessor
 
-from services.caption_service.src.infrastructure.__generated__.python.caption_service.v1.caption_service_pb2 import (
+from shared.python.__generated__.proto.services.caption_service.v1.caption_service_pb2 import (
     GetCaptionRequest, GetCaptionResponse)
-from services.caption_service.src.infrastructure.__generated__.python.caption_service.v1.caption_service_pb2_grpc import \
+from shared.python.__generated__.proto.services.caption_service.v1.caption_service_pb2_grpc import \
     CaptionServiceServicer
 from shared.python.domain.value_objects.image import Image
 

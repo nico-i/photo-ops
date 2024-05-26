@@ -3,11 +3,11 @@ syntax = "proto3";
 package caption_service.v1;
 
 import "google/api/annotations.proto";
-import "messages/v1/image_dto.proto";
+import "messages/image_dto/v1/image_dto.proto";
 
 // Request to get caption for an image
 message GetCaptionRequest {
-	shared.messages.v1.ImageDto image = 1;
+	shared.messages.image_dto.v1.ImageDto image = 1;
 }
 
 // Response containing caption for an image

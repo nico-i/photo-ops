@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             (unknown)
-// source: caption_service/v1/caption_service.proto
+// source: services/caption_service/v1/caption_service.proto
 
 package caption_servicev1
 
@@ -107,5 +107,5 @@ var CaptionService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "caption_service/v1/caption_service.proto",
+	Metadata: "services/caption_service/v1/caption_service.proto",
 }
