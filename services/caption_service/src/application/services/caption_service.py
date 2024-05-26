@@ -1,8 +1,8 @@
-import cv2
+import logging
+
 from grpc import RpcContext
 from transformers import AutoModelForCausalLM, AutoProcessor
 
-from services.caption_service.src.domain.value_objects.caption import Caption
 from services.caption_service.src.infrastructure.__generated__.python.caption_service.v1.caption_service_pb2 import (
     GetCaptionRequest, GetCaptionResponse)
 from services.caption_service.src.infrastructure.__generated__.python.caption_service.v1.caption_service_pb2_grpc import \
@@ -16,6 +16,7 @@ class CaptionService(CaptionServiceServicer):
         self.__model = AutoModelForCausalLM.from_pretrained("microsoft/git-base-coco")
     
     def get_caption(self, request: GetCaptionRequest, context: RpcContext) -> GetCaptionResponse:
+        logging.info(f"request: {request}")
         try:
             img = Image.from_local_path(request.image.path) if request.image.HasField('path') else Image.from_base64_string(request.image.base64_image.data)
         except Exception as e:
@@ -31,6 +32,10 @@ class CaptionService(CaptionServiceServicer):
 
         predictions = self.__processor.batch_decode(generated_ids, skip_special_tokens=True)
         
-        caption = Caption(predictions[0])
+        logging.info(f"predictions: {''.join(f"\"{pred}\"" for pred in predictions)}")
         
-        return GetCaptionResponse(caption=caption.get_caption())
+        res = GetCaptionResponse(caption=predictions[0])
+        
+        logging.info(f"response: {res}")
+        
+        return res
