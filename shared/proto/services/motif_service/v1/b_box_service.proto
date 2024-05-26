@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package services.motif_service.v1;
+
+import "google/api/annotations.proto";
+import "messages/base64_image_dto/v1/base64_image_dto.proto";
+import "messages/image_dto/v1/image_dto.proto";
+
+// Bounding box to encapsulate the an object in an image.
+message BBoxDto {
+	// The x pixel coordinate of the top left corner of the bounding box.
+	int32 x = 1;
+	// The y pixel coordinate of the top left corner of the bounding box.
+	int32 y = 2;
+	// The width of the bounding box.
+	int32 width = 3;
+	// The height of the bounding box.
+	int32 height = 4;
+}
+
+
+message GetBBoxRequest {
+	shared.messages.image_dto.v1.ImageDto image = 1;
+}
+
+message GetBBoxDebugRequest {
+	shared.messages.image_dto.v1.ImageDto image = 1;
+}
+
+message GetBBoxResponse {
+	BBoxDto b_box = 1;
+}
+
+message GetBBoxDebugResponse {
+	shared.messages.base64_image_dto.v1.Base64ImageDto image = 1;
+}
+
+
+// Service in charge of providing bounding box information for the subject in a given image.
+service BBoxService {
+	// Returns bounding box information for the subject in the image.
+	rpc get_b_box (GetBBoxRequest) returns (GetBBoxResponse) {
+		option (google.api.http) = {
+			post: "/v1/bbox"
+			body: "*"
+		};
+	}
+
+	// Returns the image used to generate the bounding box with the bounding box drawn on it.
+	rpc get_b_box_debug (GetBBoxDebugRequest) returns (GetBBoxDebugResponse) {
+		option (google.api.http) = {
+			post: "/v1/bbox/debug"
+			body: "*"
+		};
+	}
+}

@@ -25,6 +25,8 @@ NOTE: Currently all models used are cpu based.
 7. [ ] The caption is then used in cohesion with the LLM model to generate hashtags
 8. [ ] The caption and hashtags are then stored as IPTC data in the image
 
+You are a model which receives text description of images and provides the best possible instagram hashtags for said image description. Choose relevant hot hashtags to maximize view count. Your responses are csv strings containing the hashtags.
+
 ### Running the application
 
 - docker

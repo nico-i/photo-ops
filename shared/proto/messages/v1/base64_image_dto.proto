@@ -1,9 +1,0 @@
-syntax = "proto3";
-
-package shared.messages.v1;
-
-// Image encoded in base64.
-message Base64ImageDto {
-	// The image data encoded in base64.
-	string data = 1;
-}
