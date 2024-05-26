@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             (unknown)
-// source: v1/b_box_service.proto
+// source: motif_service/v1/b_box_service.proto
 
 package motif_servicev1
 
@@ -146,5 +146,5 @@ var BBoxService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "v1/b_box_service.proto",
+	Metadata: "motif_service/v1/b_box_service.proto",
 }

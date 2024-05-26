@@ -1,0 +1,19 @@
+meta {
+  name: obj
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8081/v1/caption
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "image": {
+      "path": "shared/test/img/obj.jpg"
+    }
+  }
+}

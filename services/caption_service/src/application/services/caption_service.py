@@ -1,3 +1,4 @@
+import cv2
 from grpc import RpcContext
 from transformers import AutoModelForCausalLM, AutoProcessor
 
@@ -21,8 +22,10 @@ class CaptionService(CaptionServiceServicer):
             context.set_code(3)
             context.set_details(str(e))
             return
+        
+        pil_img = img.get_pil_img()
 
-        pixel_values = self.__processor(images=img, return_tensors="pt").pixel_values
+        pixel_values = self.__processor(images=pil_img, return_tensors="pt").pixel_values
 
         generated_ids = self.__model.generate(pixel_values=pixel_values, max_length=50)
 

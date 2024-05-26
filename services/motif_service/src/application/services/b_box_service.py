@@ -9,9 +9,9 @@ from services.motif_service.src.application.services.image_service import \
 from services.motif_service.src.domain.value_objects.b_box import BBox
 from services.motif_service.src.infrastructure.__generated__.python.messages.v1.base64_image_dto_pb2 import \
     Base64ImageDto
-from services.motif_service.src.infrastructure.__generated__.python.v1.b_box_service_pb2 import (
+from services.motif_service.src.infrastructure.__generated__.python.motif_service.v1.b_box_service_pb2 import (
     GetBBoxDebugRequest, GetBBoxDebugResponse, GetBBoxRequest, GetBBoxResponse)
-from services.motif_service.src.infrastructure.__generated__.python.v1.b_box_service_pb2_grpc import \
+from services.motif_service.src.infrastructure.__generated__.python.motif_service.v1.b_box_service_pb2_grpc import \
     BBoxServiceServicer
 from shared.python.domain.value_objects.image import Image
 

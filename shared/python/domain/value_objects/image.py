@@ -23,7 +23,7 @@ class Image:
         """
         Get the PIL image
         """
-        cv2.cvtColor(self.__cv2_image, cv2.COLOR_BGR2RGB)
+        cv_image_rgb = cv2.cvtColor(self.__cv2_image, cv2.COLOR_BGR2RGB)
         # Convert the OpenCV image (NumPy array) to a PIL Image
         pil_image = PILImage.fromarray(cv_image_rgb)
         return pil_image
