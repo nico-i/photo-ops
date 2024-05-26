@@ -5,6 +5,9 @@ coloredlogs==15.0.1
 distlib==0.3.8
 filelock==3.14.0
 flatbuffers==24.3.25
+googleapis-common-protos==1.63.0
+grpcio==1.64.0
+grpcio-tools==1.64.0
 humanfriendly==10.0
 idna==3.7
 imageio==2.34.1
@@ -30,6 +33,7 @@ requests==2.32.2
 rpds-py==0.18.1
 scikit-image==0.23.2
 scipy==1.13.1
+setuptools==70.0.0
 sympy==1.12
 tifffile==2024.5.22
 tqdm==4.66.4

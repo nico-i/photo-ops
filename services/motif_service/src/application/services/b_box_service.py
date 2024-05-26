@@ -1,15 +1,19 @@
+from re import I
+
 import cv2
 import numpy as np
 from grpc import RpcContext
-from src.application.services.image_service import ImageService
-from src.domain.value_objects.b_box import BBox
-from src.domain.value_objects.image import Image
-from src.infrastructure.__generated__.python.messages.v1.base64_image_dto_pb2 import \
+
+from services.motif_service.src.application.services.image_service import \
+    ImageService
+from services.motif_service.src.domain.value_objects.b_box import BBox
+from services.motif_service.src.infrastructure.__generated__.python.messages.v1.base64_image_dto_pb2 import \
     Base64ImageDto
-from src.infrastructure.__generated__.python.v1.b_box_service_pb2 import (
+from services.motif_service.src.infrastructure.__generated__.python.v1.b_box_service_pb2 import (
     GetBBoxDebugRequest, GetBBoxDebugResponse, GetBBoxRequest, GetBBoxResponse)
-from src.infrastructure.__generated__.python.v1.b_box_service_pb2_grpc import \
+from services.motif_service.src.infrastructure.__generated__.python.v1.b_box_service_pb2_grpc import \
     BBoxServiceServicer
+from shared.python.domain.value_objects.image import Image
 
 
 class BBoxService(BBoxServiceServicer):
@@ -62,7 +66,7 @@ class BBoxService(BBoxServiceServicer):
 
 	def get_b_box(self, request:GetBBoxRequest, context: RpcContext) -> GetBBoxResponse:
 		try:
-			img: Image = Image.from_dto(request.image)
+			img = Image.from_local_path(request.image.path) if request.image.HasField('path') else Image.from_base64_string(request.image.base64_image.data)
 		except Exception as e:
 			context.set_code(3)
 			context.set_details(str(e))
@@ -80,7 +84,7 @@ class BBoxService(BBoxServiceServicer):
 
 	def get_b_box_debug(self, request:GetBBoxDebugRequest, context: RpcContext) -> GetBBoxDebugResponse:
 		try:
-			img: Image = Image.from_dto(request.image)
+			img = Image.from_local_path(request.image.path) if request.image.HasField('path') else Image.from_base64_string(request.image.base64_image.data)
 		except Exception as e:
 			context.set_code(3)
 			context.set_details(str(e))
@@ -96,7 +100,7 @@ class BBoxService(BBoxServiceServicer):
 		mask_img = cv2.cvtColor(binary_arr, cv2.COLOR_GRAY2BGR)
 
 		# Overlay the original image onto the binary image with opacity
-		original_img = img.get_arr()
+		original_img = img.get_cv2_img()
 
 		opacity = 0.4
 		overlay_image = cv2.addWeighted(original_img, opacity, mask_img, 1 - opacity, 0)

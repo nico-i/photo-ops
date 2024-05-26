@@ -2,7 +2,7 @@ import base64
 
 import cv2
 import numpy as np
-from src.infrastructure.__generated__.python.messages.v1.image_dto_pb2 import ImageDto
+from PIL import Image as PILImage
 
 
 class Image:
@@ -13,12 +13,21 @@ class Image:
     def __init__(self, cv2_image):
         self.__cv2_image = cv2_image
         
-    def get_arr(self) -> np.ndarray:
+    def get_cv2_img(self) -> np.ndarray:
         """
-        Get the ndarray of this image
+        Get the cv2 image (numpy array)
         """
         return self.__cv2_image
     
+    def get_pil_img(self) -> PILImage:
+        """
+        Get the PIL image
+        """
+        cv2.cvtColor(self.__cv2_image, cv2.COLOR_BGR2RGB)
+        # Convert the OpenCV image (NumPy array) to a PIL Image
+        pil_image = PILImage.fromarray(cv_image_rgb)
+        return pil_image
+            
     def to_base64_string(self) -> str:
         """
         Convert the image to base64 string
@@ -33,27 +42,6 @@ class Image:
         base64_string = base64.b64encode(img_data).decode()
         
         return base64_string
-    
-    @staticmethod
-    def from_dto(dto: ImageDto) -> 'Image':
-        """
-        Create an Image object from ImageDto object
-
-        Args:
-            dto (ImageDto): ImageDto object
-
-        Raises:
-            ValueError: If ImageDto object does not have path or base64_image
-
-        Returns:
-            Image: Image object
-        """
-        if dto.HasField('path'):
-            return Image.from_local_path(dto.path)
-        elif dto.HasField('base64_image'):
-            return Image.from_base64_string(dto.base64_image.data)
-        else:
-            raise ValueError("ImageDto must have either path or base64_image")
     
     @staticmethod
     def from_local_path( path: str) -> 'Image':

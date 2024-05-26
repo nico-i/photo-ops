@@ -5,7 +5,7 @@ meta {
 }
 
 post {
-  url: http://localhost:8081/v1/bbox
+  url: http://localhost:8081/v1/bbox/debug
   body: json
   auth: none
 }
@@ -13,7 +13,7 @@ post {
 body:json {
   {
     "image": {
-      "path": "../../services/motif_service/docs/examples/person.jpg"
+      "path": "shared/test/img/person.jpg"
     }
   }
 }
