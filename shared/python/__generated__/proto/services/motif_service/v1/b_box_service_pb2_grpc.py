@@ -16,12 +16,12 @@ class BBoxServiceStub(object):
             channel: A grpc.Channel.
         """
         self.get_b_box = channel.unary_unary(
-                '/services.motif_service.v1.BBoxService/get_b_box',
+                '/motif_service.v1.BBoxService/get_b_box',
                 request_serializer=services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
                 response_deserializer=services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
                 _registered_method=True)
         self.get_b_box_debug = channel.unary_unary(
-                '/services.motif_service.v1.BBoxService/get_b_box_debug',
+                '/motif_service.v1.BBoxService/get_b_box_debug',
                 request_serializer=services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
                 response_deserializer=services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
                 _registered_method=True)
@@ -60,9 +60,9 @@ def add_BBoxServiceServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'services.motif_service.v1.BBoxService', rpc_method_handlers)
+            'motif_service.v1.BBoxService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('services.motif_service.v1.BBoxService', rpc_method_handlers)
+    server.add_registered_method_handlers('motif_service.v1.BBoxService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -84,7 +84,7 @@ class BBoxService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/services.motif_service.v1.BBoxService/get_b_box',
+            '/motif_service.v1.BBoxService/get_b_box',
             services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxRequest.SerializeToString,
             services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxResponse.FromString,
             options,
@@ -111,7 +111,7 @@ class BBoxService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/services.motif_service.v1.BBoxService/get_b_box_debug',
+            '/motif_service.v1.BBoxService/get_b_box_debug',
             services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugRequest.SerializeToString,
             services_dot_motif__service_dot_v1_dot_b__box__service__pb2.GetBBoxDebugResponse.FromString,
             options,

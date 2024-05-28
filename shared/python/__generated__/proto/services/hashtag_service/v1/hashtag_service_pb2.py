@@ -26,20 +26,20 @@ from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from messages.image_dto.v1 import image_dto_pb2 as messages_dot_image__dto_dot_v1_dot_image__dto__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n1services/hashtag_service/v1/hashtag_service.proto\x12\x1bservices.caption_service.v1\x1a\x1cgoogle/api/annotations.proto\x1a%messages/image_dto/v1/image_dto.proto\".\n\x12GetHashtagsRequest\x12\x18\n\x07\x63\x61ption\x18\x01 \x01(\tR\x07\x63\x61ption\"8\n\x13GetHashtagsResponse\x12!\n\x0chashtags_csv\x18\x01 \x01(\tR\x0bhashtagsCsv2\x99\x01\n\x0eHashtagService\x12\x86\x01\n\x0bGetHashtags\x12/.services.caption_service.v1.GetHashtagsRequest\x1a\x30.services.caption_service.v1.GetHashtagsResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\x0c/v1/hashtagsB\xa9\x02\n\x1f\x63om.services.caption_service.v1B\x13HashtagServiceProtoP\x01Zggithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/hashtag_service/v1;caption_servicev1\xa2\x02\x03SCX\xaa\x02\x1aServices.CaptionService.V1\xca\x02\x1aServices\\CaptionService\\V1\xe2\x02&Services\\CaptionService\\V1\\GPBMetadata\xea\x02\x1cServices::CaptionService::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n1services/hashtag_service/v1/hashtag_service.proto\x12\x12hashtag_service.v1\x1a\x1cgoogle/api/annotations.proto\x1a%messages/image_dto/v1/image_dto.proto\".\n\x12GetHashtagsRequest\x12\x18\n\x07\x63\x61ption\x18\x01 \x01(\tR\x07\x63\x61ption\"8\n\x13GetHashtagsResponse\x12!\n\x0chashtags_csv\x18\x01 \x01(\tR\x0bhashtagsCsv2\x87\x01\n\x0eHashtagService\x12u\n\x0cget_hashtags\x12&.hashtag_service.v1.GetHashtagsRequest\x1a\'.hashtag_service.v1.GetHashtagsResponse\"\x14\x82\xd3\xe4\x93\x02\x0e\x12\x0c/v1/hashtagsB\xfb\x01\n\x16\x63om.hashtag_service.v1B\x13HashtagServiceProtoP\x01Zggithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/hashtag_service/v1;hashtag_servicev1\xa2\x02\x03HXX\xaa\x02\x11HashtagService.V1\xca\x02\x11HashtagService\\V1\xe2\x02\x1dHashtagService\\V1\\GPBMetadata\xea\x02\x12HashtagService::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'services.hashtag_service.v1.hashtag_service_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\037com.services.caption_service.v1B\023HashtagServiceProtoP\001Zggithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/hashtag_service/v1;caption_servicev1\242\002\003SCX\252\002\032Services.CaptionService.V1\312\002\032Services\\CaptionService\\V1\342\002&Services\\CaptionService\\V1\\GPBMetadata\352\002\034Services::CaptionService::V1'
-  _globals['_HASHTAGSERVICE'].methods_by_name['GetHashtags']._loaded_options = None
-  _globals['_HASHTAGSERVICE'].methods_by_name['GetHashtags']._serialized_options = b'\202\323\344\223\002\016\022\014/v1/hashtags'
-  _globals['_GETHASHTAGSREQUEST']._serialized_start=151
-  _globals['_GETHASHTAGSREQUEST']._serialized_end=197
-  _globals['_GETHASHTAGSRESPONSE']._serialized_start=199
-  _globals['_GETHASHTAGSRESPONSE']._serialized_end=255
-  _globals['_HASHTAGSERVICE']._serialized_start=258
-  _globals['_HASHTAGSERVICE']._serialized_end=411
+  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.hashtag_service.v1B\023HashtagServiceProtoP\001Zggithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/hashtag_service/v1;hashtag_servicev1\242\002\003HXX\252\002\021HashtagService.V1\312\002\021HashtagService\\V1\342\002\035HashtagService\\V1\\GPBMetadata\352\002\022HashtagService::V1'
+  _globals['_HASHTAGSERVICE'].methods_by_name['get_hashtags']._loaded_options = None
+  _globals['_HASHTAGSERVICE'].methods_by_name['get_hashtags']._serialized_options = b'\202\323\344\223\002\016\022\014/v1/hashtags'
+  _globals['_GETHASHTAGSREQUEST']._serialized_start=142
+  _globals['_GETHASHTAGSREQUEST']._serialized_end=188
+  _globals['_GETHASHTAGSRESPONSE']._serialized_start=190
+  _globals['_GETHASHTAGSRESPONSE']._serialized_end=246
+  _globals['_HASHTAGSERVICE']._serialized_start=249
+  _globals['_HASHTAGSERVICE']._serialized_end=384
 # @@protoc_insertion_point(module_scope)

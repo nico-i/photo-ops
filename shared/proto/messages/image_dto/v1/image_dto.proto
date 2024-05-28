@@ -2,14 +2,10 @@ syntax = "proto3";
 
 package shared.messages.image_dto.v1;
 
-import "messages/base64_image_dto/v1/base64_image_dto.proto";
-
 // Image to be processed by the BBoxService.
-message ImageDto {
+message ImageDto {	
 	oneof source {
 		// The path to the image file on the server.
 		string path = 1;
-		// The image encoded in base64.
-		shared.messages.base64_image_dto.v1.Base64ImageDto base64_image = 2;
 	}
 }

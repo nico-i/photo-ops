@@ -15,8 +15,8 @@ class HashtagServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetHashtags = channel.unary_unary(
-                '/services.caption_service.v1.HashtagService/GetHashtags',
+        self.get_hashtags = channel.unary_unary(
+                '/hashtag_service.v1.HashtagService/get_hashtags',
                 request_serializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsRequest.SerializeToString,
                 response_deserializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsResponse.FromString,
                 _registered_method=True)
@@ -26,7 +26,7 @@ class HashtagServiceServicer(object):
     """Service for all hashtag related operations
     """
 
-    def GetHashtags(self, request, context):
+    def get_hashtags(self, request, context):
         """Get hashtags for a give caption
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
@@ -36,16 +36,16 @@ class HashtagServiceServicer(object):
 
 def add_HashtagServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetHashtags': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetHashtags,
+            'get_hashtags': grpc.unary_unary_rpc_method_handler(
+                    servicer.get_hashtags,
                     request_deserializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsRequest.FromString,
                     response_serializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'services.caption_service.v1.HashtagService', rpc_method_handlers)
+            'hashtag_service.v1.HashtagService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('services.caption_service.v1.HashtagService', rpc_method_handlers)
+    server.add_registered_method_handlers('hashtag_service.v1.HashtagService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -54,7 +54,7 @@ class HashtagService(object):
     """
 
     @staticmethod
-    def GetHashtags(request,
+    def get_hashtags(request,
             target,
             options=(),
             channel_credentials=None,
@@ -67,7 +67,7 @@ class HashtagService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/services.caption_service.v1.HashtagService/GetHashtags',
+            '/hashtag_service.v1.HashtagService/get_hashtags',
             services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsRequest.SerializeToString,
             services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsResponse.FromString,
             options,

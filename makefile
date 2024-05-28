@@ -1,12 +1,12 @@
 ### motif_service ###
 
-env-motf:
+env-motif:
 	echo "./services/motif_service/env/bin/activate"
 
-dev-motf:
+dev-motif:
 	python -m services.motif_service.src.presentation.grpc
 
-dev-motf-gw:
+dev-motif-gw:
 	cd ./services/motif_service_gateway && go run src/presentation/http/server.go
 
 

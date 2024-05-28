@@ -97,7 +97,7 @@ func RegisterBBoxServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/services.motif_service.v1.BBoxService/GetBBox", runtime.WithHTTPPathPattern("/v1/bbox"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/motif_service.v1.BBoxService/GetBBox", runtime.WithHTTPPathPattern("/v1/bbox"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -122,7 +122,7 @@ func RegisterBBoxServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/services.motif_service.v1.BBoxService/GetBBoxDebug", runtime.WithHTTPPathPattern("/v1/bbox/debug"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/motif_service.v1.BBoxService/GetBBoxDebug", runtime.WithHTTPPathPattern("/v1/bbox/debug"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -186,7 +186,7 @@ func RegisterBBoxServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/services.motif_service.v1.BBoxService/GetBBox", runtime.WithHTTPPathPattern("/v1/bbox"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/motif_service.v1.BBoxService/GetBBox", runtime.WithHTTPPathPattern("/v1/bbox"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -208,7 +208,7 @@ func RegisterBBoxServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/services.motif_service.v1.BBoxService/GetBBoxDebug", runtime.WithHTTPPathPattern("/v1/bbox/debug"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/motif_service.v1.BBoxService/GetBBoxDebug", runtime.WithHTTPPathPattern("/v1/bbox/debug"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

@@ -18,7 +18,7 @@ class CaptionService(CaptionServiceServicer):
     def get_caption(self, request: GetCaptionRequest, context: RpcContext) -> GetCaptionResponse:
         logging.info(f"request: {request}")
         try:
-            img = Image.from_local_path(request.image.path) if request.image.HasField('path') else Image.from_base64_string(request.image.base64_image.data)
+            img = Image.from_dto(request.image)
         except Exception as e:
             context.set_code(3)
             context.set_details(str(e))

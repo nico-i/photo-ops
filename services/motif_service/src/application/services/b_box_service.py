@@ -66,7 +66,7 @@ class BBoxService(BBoxServiceServicer):
 
 	def get_b_box(self, request:GetBBoxRequest, context: RpcContext) -> GetBBoxResponse:
 		try:
-			img = Image.from_local_path(request.image.path) if request.image.HasField('path') else Image.from_base64_string(request.image.base64_image.data)
+			img = Image.from_dto(request.image)
 		except Exception as e:
 			context.set_code(3)
 			context.set_details(str(e))

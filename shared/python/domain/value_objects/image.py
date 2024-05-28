@@ -4,6 +4,9 @@ import cv2
 import numpy as np
 from PIL import Image as PILImage
 
+from shared.python.__generated__.proto.messages.image_dto.v1.image_dto_pb2 import \
+    ImageDto
+
 
 class Image:
     """
@@ -44,20 +47,23 @@ class Image:
         return base64_string
     
     @staticmethod
-    def from_local_path( path: str) -> 'Image':
-        img = cv2.imread(path)
-        return Image(img)
+    def from_dto(dto: ImageDto) -> 'Image':
+        """
+        Create an Image object from a DTO
+
+        Args:
+            dto: Image DTO
+
+        Returns:
+            Image: Image object
+        """
+        if dto.HasField('path'):
+            return Image.from_local_path(dto.path)
+        else:
+            raise ValueError("Image DTO must have a \"path\" field")
     
     @staticmethod
-    def from_base64_string(base64_string: str) -> 'Image':
-         # Decode base64 string to bytes
-        img_data = base64.b64decode(base64_string)
-        
-        # Convert bytes data to numpy array
-        np_array = np.frombuffer(img_data, dtype=np.uint8)
-        
-        # Decode numpy array to an image
-        img = cv2.imdecode(np_array, cv2.IMREAD_COLOR)
-        
+    def from_local_path( path: str) -> 'Image':
+        img = cv2.imread(path)
         return Image(img)
     

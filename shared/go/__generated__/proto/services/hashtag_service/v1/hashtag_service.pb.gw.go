@@ -2,11 +2,11 @@
 // source: services/hashtag_service/v1/hashtag_service.proto
 
 /*
-Package caption_servicev1 is a reverse proxy.
+Package hashtag_servicev1 is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package caption_servicev1
+package hashtag_servicev1
 
 import (
 	"context"
@@ -81,7 +81,7 @@ func RegisterHashtagServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/services.caption_service.v1.HashtagService/GetHashtags", runtime.WithHTTPPathPattern("/v1/hashtags"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/hashtag_service.v1.HashtagService/GetHashtags", runtime.WithHTTPPathPattern("/v1/hashtags"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -145,7 +145,7 @@ func RegisterHashtagServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/services.caption_service.v1.HashtagService/GetHashtags", runtime.WithHTTPPathPattern("/v1/hashtags"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/hashtag_service.v1.HashtagService/GetHashtags", runtime.WithHTTPPathPattern("/v1/hashtags"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return

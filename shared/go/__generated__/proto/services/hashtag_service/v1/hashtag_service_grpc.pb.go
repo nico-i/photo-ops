@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: services/hashtag_service/v1/hashtag_service.proto
 
-package caption_servicev1
+package hashtag_servicev1
 
 import (
 	context "context"
@@ -19,7 +19,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	HashtagService_GetHashtags_FullMethodName = "/services.caption_service.v1.HashtagService/GetHashtags"
+	HashtagService_GetHashtags_FullMethodName = "/hashtag_service.v1.HashtagService/get_hashtags"
 )
 
 // HashtagServiceClient is the client API for HashtagService service.
@@ -98,11 +98,11 @@ func _HashtagService_GetHashtags_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var HashtagService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "services.caption_service.v1.HashtagService",
+	ServiceName: "hashtag_service.v1.HashtagService",
 	HandlerType: (*HashtagServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetHashtags",
+			MethodName: "get_hashtags",
 			Handler:    _HashtagService_GetHashtags_Handler,
 		},
 	},

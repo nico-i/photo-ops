@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package services.motif_service.v1;
+package motif_service.v1;
 
 import "google/api/annotations.proto";
 import "messages/base64_image_dto/v1/base64_image_dto.proto";

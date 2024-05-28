@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package services.caption_service.v1;
+package hashtag_service.v1;
 
 import "google/api/annotations.proto";
 import "messages/image_dto/v1/image_dto.proto";
@@ -20,7 +20,7 @@ message GetHashtagsResponse {
 // Service for all hashtag related operations
 service HashtagService {
 	// Get hashtags for a give caption
-	rpc GetHashtags(GetHashtagsRequest) returns (GetHashtagsResponse) {
+	rpc get_hashtags(GetHashtagsRequest) returns (GetHashtagsResponse) {
 		option (google.api.http) = {
 			get: "/v1/hashtags"
 		};
