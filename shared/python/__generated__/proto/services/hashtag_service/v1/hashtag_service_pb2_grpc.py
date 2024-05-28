@@ -5,8 +5,8 @@ import grpc
 from services.hashtag_service.v1 import hashtag_service_pb2 as services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2
 
 
-class CaptionServiceStub(object):
-    """Service to handle all image captioning operations
+class HashtagServiceStub(object):
+    """Service for all hashtag related operations
     """
 
     def __init__(self, channel):
@@ -15,46 +15,46 @@ class CaptionServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.get_caption = channel.unary_unary(
-                '/services.caption_service.v1.CaptionService/get_caption',
-                request_serializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetCaptionRequest.SerializeToString,
-                response_deserializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetCaptionResponse.FromString,
+        self.GetHashtags = channel.unary_unary(
+                '/services.caption_service.v1.HashtagService/GetHashtags',
+                request_serializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsRequest.SerializeToString,
+                response_deserializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsResponse.FromString,
                 _registered_method=True)
 
 
-class CaptionServiceServicer(object):
-    """Service to handle all image captioning operations
+class HashtagServiceServicer(object):
+    """Service for all hashtag related operations
     """
 
-    def get_caption(self, request, context):
-        """Get caption for an image
+    def GetHashtags(self, request, context):
+        """Get hashtags for a give caption
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_CaptionServiceServicer_to_server(servicer, server):
+def add_HashtagServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'get_caption': grpc.unary_unary_rpc_method_handler(
-                    servicer.get_caption,
-                    request_deserializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetCaptionRequest.FromString,
-                    response_serializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetCaptionResponse.SerializeToString,
+            'GetHashtags': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetHashtags,
+                    request_deserializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsRequest.FromString,
+                    response_serializer=services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'services.caption_service.v1.CaptionService', rpc_method_handlers)
+            'services.caption_service.v1.HashtagService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('services.caption_service.v1.CaptionService', rpc_method_handlers)
+    server.add_registered_method_handlers('services.caption_service.v1.HashtagService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class CaptionService(object):
-    """Service to handle all image captioning operations
+class HashtagService(object):
+    """Service for all hashtag related operations
     """
 
     @staticmethod
-    def get_caption(request,
+    def GetHashtags(request,
             target,
             options=(),
             channel_credentials=None,
@@ -67,9 +67,9 @@ class CaptionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/services.caption_service.v1.CaptionService/get_caption',
-            services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetCaptionRequest.SerializeToString,
-            services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetCaptionResponse.FromString,
+            '/services.caption_service.v1.HashtagService/GetHashtags',
+            services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsRequest.SerializeToString,
+            services_dot_hashtag__service_dot_v1_dot_hashtag__service__pb2.GetHashtagsResponse.FromString,
             options,
             channel_credentials,
             insecure,

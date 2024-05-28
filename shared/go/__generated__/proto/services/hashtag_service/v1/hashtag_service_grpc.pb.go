@@ -19,91 +19,91 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	CaptionService_GetCaption_FullMethodName = "/services.caption_service.v1.CaptionService/get_caption"
+	HashtagService_GetHashtags_FullMethodName = "/services.caption_service.v1.HashtagService/GetHashtags"
 )
 
-// CaptionServiceClient is the client API for CaptionService service.
+// HashtagServiceClient is the client API for HashtagService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type CaptionServiceClient interface {
-	// Get caption for an image
-	GetCaption(ctx context.Context, in *GetCaptionRequest, opts ...grpc.CallOption) (*GetCaptionResponse, error)
+type HashtagServiceClient interface {
+	// Get hashtags for a give caption
+	GetHashtags(ctx context.Context, in *GetHashtagsRequest, opts ...grpc.CallOption) (*GetHashtagsResponse, error)
 }
 
-type captionServiceClient struct {
+type hashtagServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewCaptionServiceClient(cc grpc.ClientConnInterface) CaptionServiceClient {
-	return &captionServiceClient{cc}
+func NewHashtagServiceClient(cc grpc.ClientConnInterface) HashtagServiceClient {
+	return &hashtagServiceClient{cc}
 }
 
-func (c *captionServiceClient) GetCaption(ctx context.Context, in *GetCaptionRequest, opts ...grpc.CallOption) (*GetCaptionResponse, error) {
-	out := new(GetCaptionResponse)
-	err := c.cc.Invoke(ctx, CaptionService_GetCaption_FullMethodName, in, out, opts...)
+func (c *hashtagServiceClient) GetHashtags(ctx context.Context, in *GetHashtagsRequest, opts ...grpc.CallOption) (*GetHashtagsResponse, error) {
+	out := new(GetHashtagsResponse)
+	err := c.cc.Invoke(ctx, HashtagService_GetHashtags_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CaptionServiceServer is the server API for CaptionService service.
-// All implementations must embed UnimplementedCaptionServiceServer
+// HashtagServiceServer is the server API for HashtagService service.
+// All implementations must embed UnimplementedHashtagServiceServer
 // for forward compatibility
-type CaptionServiceServer interface {
-	// Get caption for an image
-	GetCaption(context.Context, *GetCaptionRequest) (*GetCaptionResponse, error)
-	mustEmbedUnimplementedCaptionServiceServer()
+type HashtagServiceServer interface {
+	// Get hashtags for a give caption
+	GetHashtags(context.Context, *GetHashtagsRequest) (*GetHashtagsResponse, error)
+	mustEmbedUnimplementedHashtagServiceServer()
 }
 
-// UnimplementedCaptionServiceServer must be embedded to have forward compatible implementations.
-type UnimplementedCaptionServiceServer struct {
+// UnimplementedHashtagServiceServer must be embedded to have forward compatible implementations.
+type UnimplementedHashtagServiceServer struct {
 }
 
-func (UnimplementedCaptionServiceServer) GetCaption(context.Context, *GetCaptionRequest) (*GetCaptionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCaption not implemented")
+func (UnimplementedHashtagServiceServer) GetHashtags(context.Context, *GetHashtagsRequest) (*GetHashtagsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetHashtags not implemented")
 }
-func (UnimplementedCaptionServiceServer) mustEmbedUnimplementedCaptionServiceServer() {}
+func (UnimplementedHashtagServiceServer) mustEmbedUnimplementedHashtagServiceServer() {}
 
-// UnsafeCaptionServiceServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to CaptionServiceServer will
+// UnsafeHashtagServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to HashtagServiceServer will
 // result in compilation errors.
-type UnsafeCaptionServiceServer interface {
-	mustEmbedUnimplementedCaptionServiceServer()
+type UnsafeHashtagServiceServer interface {
+	mustEmbedUnimplementedHashtagServiceServer()
 }
 
-func RegisterCaptionServiceServer(s grpc.ServiceRegistrar, srv CaptionServiceServer) {
-	s.RegisterService(&CaptionService_ServiceDesc, srv)
+func RegisterHashtagServiceServer(s grpc.ServiceRegistrar, srv HashtagServiceServer) {
+	s.RegisterService(&HashtagService_ServiceDesc, srv)
 }
 
-func _CaptionService_GetCaption_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCaptionRequest)
+func _HashtagService_GetHashtags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetHashtagsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CaptionServiceServer).GetCaption(ctx, in)
+		return srv.(HashtagServiceServer).GetHashtags(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CaptionService_GetCaption_FullMethodName,
+		FullMethod: HashtagService_GetHashtags_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CaptionServiceServer).GetCaption(ctx, req.(*GetCaptionRequest))
+		return srv.(HashtagServiceServer).GetHashtags(ctx, req.(*GetHashtagsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// CaptionService_ServiceDesc is the grpc.ServiceDesc for CaptionService service.
+// HashtagService_ServiceDesc is the grpc.ServiceDesc for HashtagService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var CaptionService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "services.caption_service.v1.CaptionService",
-	HandlerType: (*CaptionServiceServer)(nil),
+var HashtagService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "services.caption_service.v1.HashtagService",
+	HandlerType: (*HashtagServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "get_caption",
-			Handler:    _CaptionService_GetCaption_Handler,
+			MethodName: "GetHashtags",
+			Handler:    _HashtagService_GetHashtags_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

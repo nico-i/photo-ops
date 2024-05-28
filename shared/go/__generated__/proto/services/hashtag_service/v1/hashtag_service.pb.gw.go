@@ -31,39 +31,49 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
-func request_CaptionService_GetCaption_0(ctx context.Context, marshaler runtime.Marshaler, client CaptionServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetCaptionRequest
+var (
+	filter_HashtagService_GetHashtags_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+)
+
+func request_HashtagService_GetHashtags_0(ctx context.Context, marshaler runtime.Marshaler, client HashtagServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetHashtagsRequest
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_HashtagService_GetHashtags_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := client.GetCaption(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	msg, err := client.GetHashtags(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
 	return msg, metadata, err
 
 }
 
-func local_request_CaptionService_GetCaption_0(ctx context.Context, marshaler runtime.Marshaler, server CaptionServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetCaptionRequest
+func local_request_HashtagService_GetHashtags_0(ctx context.Context, marshaler runtime.Marshaler, server HashtagServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq GetHashtagsRequest
 	var metadata runtime.ServerMetadata
 
-	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_HashtagService_GetHashtags_0); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
-	msg, err := server.GetCaption(ctx, &protoReq)
+	msg, err := server.GetHashtags(ctx, &protoReq)
 	return msg, metadata, err
 
 }
 
-// RegisterCaptionServiceHandlerServer registers the http handlers for service CaptionService to "mux".
-// UnaryRPC     :call CaptionServiceServer directly.
+// RegisterHashtagServiceHandlerServer registers the http handlers for service HashtagService to "mux".
+// UnaryRPC     :call HashtagServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
-// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterCaptionServiceHandlerFromEndpoint instead.
-func RegisterCaptionServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server CaptionServiceServer) error {
+// Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterHashtagServiceHandlerFromEndpoint instead.
+func RegisterHashtagServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server HashtagServiceServer) error {
 
-	mux.Handle("POST", pattern_CaptionService_GetCaption_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_HashtagService_GetHashtags_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		var stream runtime.ServerTransportStream
@@ -71,12 +81,12 @@ func RegisterCaptionServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/services.caption_service.v1.CaptionService/GetCaption", runtime.WithHTTPPathPattern("/v1/caption"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/services.caption_service.v1.HashtagService/GetHashtags", runtime.WithHTTPPathPattern("/v1/hashtags"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_CaptionService_GetCaption_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_HashtagService_GetHashtags_0(annotatedContext, inboundMarshaler, server, req, pathParams)
 		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
@@ -84,16 +94,16 @@ func RegisterCaptionServiceHandlerServer(ctx context.Context, mux *runtime.Serve
 			return
 		}
 
-		forward_CaptionService_GetCaption_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_HashtagService_GetHashtags_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
 	return nil
 }
 
-// RegisterCaptionServiceHandlerFromEndpoint is same as RegisterCaptionServiceHandler but
+// RegisterHashtagServiceHandlerFromEndpoint is same as RegisterHashtagServiceHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterCaptionServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterHashtagServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.NewClient(endpoint, opts...)
 	if err != nil {
 		return err
@@ -113,41 +123,41 @@ func RegisterCaptionServiceHandlerFromEndpoint(ctx context.Context, mux *runtime
 		}()
 	}()
 
-	return RegisterCaptionServiceHandler(ctx, mux, conn)
+	return RegisterHashtagServiceHandler(ctx, mux, conn)
 }
 
-// RegisterCaptionServiceHandler registers the http handlers for service CaptionService to "mux".
+// RegisterHashtagServiceHandler registers the http handlers for service HashtagService to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterCaptionServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterCaptionServiceHandlerClient(ctx, mux, NewCaptionServiceClient(conn))
+func RegisterHashtagServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterHashtagServiceHandlerClient(ctx, mux, NewHashtagServiceClient(conn))
 }
 
-// RegisterCaptionServiceHandlerClient registers the http handlers for service CaptionService
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "CaptionServiceClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "CaptionServiceClient"
+// RegisterHashtagServiceHandlerClient registers the http handlers for service HashtagService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "HashtagServiceClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "HashtagServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "CaptionServiceClient" to call the correct interceptors.
-func RegisterCaptionServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client CaptionServiceClient) error {
+// "HashtagServiceClient" to call the correct interceptors.
+func RegisterHashtagServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client HashtagServiceClient) error {
 
-	mux.Handle("POST", pattern_CaptionService_GetCaption_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_HashtagService_GetHashtags_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/services.caption_service.v1.CaptionService/GetCaption", runtime.WithHTTPPathPattern("/v1/caption"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/services.caption_service.v1.HashtagService/GetHashtags", runtime.WithHTTPPathPattern("/v1/hashtags"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_CaptionService_GetCaption_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_HashtagService_GetHashtags_0(annotatedContext, inboundMarshaler, client, req, pathParams)
 		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
 		if err != nil {
 			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_CaptionService_GetCaption_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_HashtagService_GetHashtags_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -155,9 +165,9 @@ func RegisterCaptionServiceHandlerClient(ctx context.Context, mux *runtime.Serve
 }
 
 var (
-	pattern_CaptionService_GetCaption_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "caption"}, ""))
+	pattern_HashtagService_GetHashtags_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"v1", "hashtags"}, ""))
 )
 
 var (
-	forward_CaptionService_GetCaption_0 = runtime.ForwardResponseMessage
+	forward_HashtagService_GetHashtags_0 = runtime.ForwardResponseMessage
 )

@@ -5,23 +5,25 @@ package services.caption_service.v1;
 import "google/api/annotations.proto";
 import "messages/image_dto/v1/image_dto.proto";
 
-// Request to get caption for an image
-message GetCaptionRequest {
-	shared.messages.image_dto.v1.ImageDto image = 1;
+// Request message for GetHashtags
+message GetHashtagsRequest {
+	// Caption for which hashtags are to be generated
+	string caption = 1;
 }
 
-// Response containing caption for an image
-message GetCaptionResponse {
-    string caption = 1;
+// Response message for GetHashtags
+message GetHashtagsResponse {
+	// List of hashtags generated for the caption
+	string hashtags_csv = 1;
 }
 
-// Service to handle all image captioning operations
-service CaptionService {
-    // Get caption for an image
-	rpc get_caption(GetCaptionRequest) returns (GetCaptionResponse) {
+// Service for all hashtag related operations
+service HashtagService {
+	// Get hashtags for a give caption
+	rpc GetHashtags(GetHashtagsRequest) returns (GetHashtagsResponse) {
 		option (google.api.http) = {
-			post: "/v1/caption"
-			body: "*"
+			get: "/v1/hashtags"
 		};
-	}
-}
+	}}
+	
+   

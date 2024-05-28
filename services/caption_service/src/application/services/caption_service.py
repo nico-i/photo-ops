@@ -31,9 +31,7 @@ class CaptionService(CaptionServiceServicer):
         generated_ids = self.__model.generate(pixel_values=pixel_values, max_length=50)
 
         predictions = self.__processor.batch_decode(generated_ids, skip_special_tokens=True)
-        
-        logging.info(f"predictions: {''.join(f"\"{pred}\"" for pred in predictions)}")
-        
+    
         res = GetCaptionResponse(caption=predictions[0])
         
         logging.info(f"response: {res}")
