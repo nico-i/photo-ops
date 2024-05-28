@@ -14,10 +14,10 @@ from shared.python.__generated__.proto.services.hashtag_service.v1 import \
 
 
 def serve():
-    port = os.getenv("PORT") or 9090
+    port = 9090
     
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    
+    logging.info("Initializing service")
     hashtag_service = HashtagService()
     logging.info("Service intialized")
     hashtag_service_pb2_grpc.add_HashtagServiceServicer_to_server(hashtag_service, server)
