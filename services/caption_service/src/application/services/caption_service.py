@@ -16,7 +16,7 @@ class CaptionService(CaptionServiceServicer):
         self.__model = AutoModelForCausalLM.from_pretrained("microsoft/git-base-coco")
     
     def get_caption(self, request: GetCaptionRequest, context: RpcContext) -> GetCaptionResponse:
-        logging.info(f"request: {request}")
+        logging.info(f"request: {request}".strip())
         try:
             img = Image.from_dto(request.image)
         except Exception as e:
