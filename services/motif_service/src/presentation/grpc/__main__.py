@@ -16,5 +16,5 @@ if __name__ == "__main__":
 	service_name = motif_service_pb2.DESCRIPTOR.services_by_name["MotifService"].full_name
 	add_func = motif_service_pb2_grpc.add_MotifServiceServicer_to_server
  
-	server = ServiceGrpcServer(service=service, service_name=service_name, port=9091, add_func=add_func, enable_reflection=True, log_level=logging.INFO)
+	server = ServiceGrpcServer(service=service, service_name=service_name, port=9090, add_func=add_func, enable_reflection=True, log_level=logging.INFO)
 	server.serve()
