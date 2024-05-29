@@ -8,6 +8,7 @@ from shared.python.__generated__.proto.services.hashtag_service.v1.hashtag_servi
     GetHashtagsRequest, GetHashtagsResponse)
 from shared.python.__generated__.proto.services.hashtag_service.v1.hashtag_service_pb2_grpc import \
     HashtagServiceServicer
+from shared.python.infrastructure.logging.logger import get_logger
 
 
 class HashtagService(HashtagServiceServicer):
@@ -18,6 +19,7 @@ class HashtagService(HashtagServiceServicer):
             model_kwargs={"torch_dtype": torch.bfloat16},
             device_map="auto",
             )
+        self.__logger = get_logger()
         self.__system_msg = {"role": "system", "content": "You are an Instagram hashtag generator that only \
                              responds with a string in the form of a csv. The string must contain a list of a \
                              maximum of 30 hashtags, which are related to the given image description. \
@@ -25,7 +27,7 @@ class HashtagService(HashtagServiceServicer):
                              and will maximize the reach of the final post. Do not include any special characters or quotations."}
         
     def get_hashtags(self, request: GetHashtagsRequest, context: RpcContext) -> GetHashtagsResponse:
-        logging.info(f"request: {request}")
+        self.__logger.info(f"request: {request}")
        
         messages = [
             self.__system_msg,
@@ -57,7 +59,7 @@ class HashtagService(HashtagServiceServicer):
         
         res = GetHashtagsResponse(hashtags_csv=prediction)
         
-        logging.info(f"response: {res}")
+        self.__logger.info(f"response: {res}")
         
         return res
         

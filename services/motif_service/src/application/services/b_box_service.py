@@ -14,6 +14,7 @@ from shared.python.__generated__.proto.services.motif_service.v1.motif_service_p
 from shared.python.__generated__.proto.services.motif_service.v1.motif_service_pb2_grpc import \
     MotifServiceServicer
 from shared.python.domain.value_objects.image import Image
+from shared.python.infrastructure.logging.logger import get_logger
 
 
 class MotifService(MotifServiceServicer):
@@ -21,10 +22,12 @@ class MotifService(MotifServiceServicer):
 	Service to handle operations related to bounding boxes
 	"""
 
-	def __init__(self, img_service: ImageService, threshold: int = 240):
+	def __init__(self, img_service: ImageService, threshold: int = 240, enable_debug: bool = False):
 		self.__img_service = img_service
         # 240 has been tested on the test images and has provided good results
 		self.__threshold = threshold
+		self.__enable_debug = enable_debug
+		self.__logger = get_logger()
 
 
 	def __threshold_ndarray(self, img_arr: np.array) -> np.array:
@@ -65,6 +68,7 @@ class MotifService(MotifServiceServicer):
 		return b_box
 
 	def get_b_box(self, request:GetBBoxRequest, context: RpcContext) -> GetBBoxResponse:
+		self.__logger.info(f"request: {request}")
 		try:
 			img = Image.from_dto(request.image)
 		except Exception as e:
@@ -79,10 +83,18 @@ class MotifService(MotifServiceServicer):
 		b_box_dto = b_box.to_dto()
 
 		res = GetBBoxResponse(b_box=b_box_dto)
+  
+		self.__logger.info(f"response: {res}")
 
 		return res
 
 	def get_b_box_debug(self, request:GetBBoxDebugRequest, context: RpcContext) -> GetBBoxDebugResponse:
+		if not self.__enable_debug:
+			context.set_code(12)
+			context.set_details("Debug mode is not enabled")
+			return
+		self.__logger.info(f"request: {request}")
+  
 		try:
 			img = Image.from_local_path(request.image.path) if request.image.HasField('path') else Image.from_base64_string(request.image.base64_image.data)
 		except Exception as e:
@@ -114,4 +126,7 @@ class MotifService(MotifServiceServicer):
 		base64_img_dto = Base64ImageDto(data=base64_str)
 
 		res = GetBBoxDebugResponse(image=base64_img_dto)
+
+		self.__logger.info(f"response: {res}")
+  
 		return res
