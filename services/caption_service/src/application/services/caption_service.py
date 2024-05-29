@@ -12,6 +12,7 @@ from shared.python.domain.value_objects.image import Image
 
 class CaptionService(CaptionServiceServicer):
     def __init__(self):
+        logging.info("Loading model and processor...")
         self.__processor = AutoProcessor.from_pretrained("microsoft/git-base-coco")
         self.__model = AutoModelForCausalLM.from_pretrained("microsoft/git-base-coco")
         
@@ -25,6 +26,14 @@ class CaptionService(CaptionServiceServicer):
             return
         
         pil_img = img.get_pil_img()
+        
+        if request.HasField('crop'):
+            crop = request.crop
+            x = crop.x
+            y = crop.y
+            width = crop.width
+            height = crop.height
+            pil_img = pil_img.crop((x, y, x + width, y + height))
 
         pixel_values = self.__processor(images=pil_img, return_tensors="pt").pixel_values
 

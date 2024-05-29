@@ -4,10 +4,12 @@ package caption_service.v1;
 
 import "google/api/annotations.proto";
 import "messages/image_dto/v1/image_dto.proto";
+import "messages/rect_dto/v1/rect_dto.proto";
 
 // Request to get caption for an image
 message GetCaptionRequest {
 	shared.messages.image_dto.v1.ImageDto image = 1;
+	optional shared.messages.rect_dto.v1.RectDto crop = 2;
 }
 
 // Response containing caption for an image

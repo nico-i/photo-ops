@@ -5,10 +5,14 @@ from concurrent import futures
 import grpc
 from grpc_reflection.v1alpha import reflection
 
+from shared.python.infrastructure.logging import logger
+
 
 class ServiceGrpcServer:
     
     def __init__(self, service: object, service_name: str,  port: int, add_func: object, max_workers: int = 10, enable_reflection: bool = False, log_level: int = logging.ERROR):
+        logger.get_logger(log_level)
+        
         self.__service = service
         self.__service_name = service_name
         self.__port = port
