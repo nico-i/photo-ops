@@ -35,9 +35,8 @@ message GetBBoxDebugResponse {
 	shared.messages.base64_image_dto.v1.Base64ImageDto image = 1;
 }
 
-
-// Service in charge of providing bounding box information for the subject in a given image.
-service BBoxService {
+// Service responsible for handling all motif related operations.
+service MotifService {
 	// Returns bounding box information for the subject in the image.
 	rpc get_b_box (GetBBoxRequest) returns (GetBBoxResponse) {
 		option (google.api.http) = {

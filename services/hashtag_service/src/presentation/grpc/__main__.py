@@ -14,7 +14,7 @@ from shared.python.__generated__.proto.services.hashtag_service.v1 import \
 
 
 def serve():
-    port = 9090
+    port = 9092
     
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     logging.info("Initializing service")

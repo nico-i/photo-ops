@@ -9,14 +9,14 @@ from services.motif_service.src.application.services.image_service import \
 from services.motif_service.src.domain.value_objects.b_box import BBox
 from shared.python.__generated__.proto.messages.base64_image_dto.v1.base64_image_dto_pb2 import \
     Base64ImageDto
-from shared.python.__generated__.proto.services.motif_service.v1.b_box_service_pb2 import (
+from shared.python.__generated__.proto.services.motif_service.v1.motif_service_pb2 import (
     GetBBoxDebugRequest, GetBBoxDebugResponse, GetBBoxRequest, GetBBoxResponse)
-from shared.python.__generated__.proto.services.motif_service.v1.b_box_service_pb2_grpc import \
-    BBoxServiceServicer
+from shared.python.__generated__.proto.services.motif_service.v1.motif_service_pb2_grpc import \
+    MotifServiceServicer
 from shared.python.domain.value_objects.image import Image
 
 
-class BBoxService(BBoxServiceServicer):
+class MotifService(MotifServiceServicer):
 	"""
 	Service to handle operations related to bounding boxes
 	"""

@@ -26,14 +26,34 @@ NOTE: Currently all models used are cpu based.
 6. [ ] Watermark the image (location is again based on a setting)
 7. [x] Generate hashtags based on the caption
 
-You are a model which receives text description of images and provides the best possible instagram hashtags for said image description. Choose relevant hot hashtags to maximize view count. Your responses are csv strings containing the hashtags.
+## FRs
 
-### Running the application
+- [x] User can upload an image
+- [ ] User can crop the image
+- [ ] User gets a recommended crop based on the subject of the image (if the bounding box is not too large)
+- [ ] User can edit the caption
+- [x] User gets a recommended caption based on the cropped image
+- [ ] User can edit the hashtags
+- [x] User gets a recommended hashtags based on the caption
+- [ ] User can specify the watermark
+- [ ] User can freely move the watermark
+- [ ] User can specify the resolution of the image
+
+## Technical Requirements
+
+- [ ] The application should be able to run on a local machine
+- [ ] The application should be able to run on a server
+- [ ] The application should be able to run on a cloud provider
+- [ ] The application should be able to run on a container
+- [ ] The application should be able to run on a container orchestrator
+- [ ] All but the service accessed by the FE should only communicate via gRPC
+
+## Running the application
 
 - docker
 - docker-compose
 
-### Development
+## Development
 
 - docker
 - docker-compose
