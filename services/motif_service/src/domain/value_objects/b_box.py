@@ -1,5 +1,5 @@
-from shared.python.__generated__.proto.services.motif_service.v1.motif_service_pb2 import \
-    BBoxDto
+from shared.python.__generated__.proto.messages.rect_dto.v1.rect_dto_pb2 import \
+    RectDto
 
 
 class BBox:
@@ -31,11 +31,11 @@ class BBox:
             "height": self.height
         }
         
-    def to_dto(self) -> BBoxDto:
+    def to_dto(self) -> RectDto:
         """
-        Convert the BBox object to BBoxDto object
+        Convert the BBox object to a RectDto object
 
         Returns:
             BBoxDto: BBoxDto object
         """
-        return BBoxDto(x=self.x, y=self.y, width=self.width, height=self.height)
+        return RectDto(x=self.x, y=self.y, width=self.width, height=self.height)

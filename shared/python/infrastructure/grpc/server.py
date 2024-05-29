@@ -1,13 +1,9 @@
 
 import logging
-import os
 from concurrent import futures
 
-from cv2 import log
 import grpc
 from grpc_reflection.v1alpha import reflection
-
-import shared.python.infrastructure.logging.logger as logger
 
 
 class ServiceGrpcServer:
@@ -17,11 +13,10 @@ class ServiceGrpcServer:
         self.__service_name = service_name
         self.__port = port
         self.__max_workers = max_workers
-        self.__logger = logger.get_logger(log_level)
         self.__add_func = add_func
         self.__enable_reflection = enable_reflection
         
-        self.__logger.info("Starting server")
+        logging.info("Starting server")
 
     def serve(self):
         port = self.__port
@@ -40,6 +35,6 @@ class ServiceGrpcServer:
         server.add_insecure_port(f"[::]:{port}")
         server.start()
         
-        self.__logger.info(f"Server started at port {port}")
+        logging.info(f"Server started at port {port}")
         
         server.wait_for_termination()

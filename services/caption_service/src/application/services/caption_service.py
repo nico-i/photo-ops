@@ -8,17 +8,15 @@ from shared.python.__generated__.proto.services.caption_service.v1.caption_servi
 from shared.python.__generated__.proto.services.caption_service.v1.caption_service_pb2_grpc import \
     CaptionServiceServicer
 from shared.python.domain.value_objects.image import Image
-from shared.python.infrastructure.logging.logger import get_logger
 
 
 class CaptionService(CaptionServiceServicer):
     def __init__(self):
         self.__processor = AutoProcessor.from_pretrained("microsoft/git-base-coco")
         self.__model = AutoModelForCausalLM.from_pretrained("microsoft/git-base-coco")
-        self.__logger = get_logger()
         
     def get_caption(self, request: GetCaptionRequest, context: RpcContext) -> GetCaptionResponse:
-        self.__logger.info(f"request: {request}".strip())
+        logging.info(f"request: {request}".strip())
         try:
             img = Image.from_dto(request.image)
         except Exception as e:
@@ -36,6 +34,6 @@ class CaptionService(CaptionServiceServicer):
     
         res = GetCaptionResponse(caption=predictions[0])
         
-        self.__logger.info(f"response: {res}")
+        logging.info(f"response: {res}")
         
         return res

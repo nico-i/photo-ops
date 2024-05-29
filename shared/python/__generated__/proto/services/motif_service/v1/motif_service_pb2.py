@@ -25,9 +25,10 @@ _sym_db = _symbol_database.Default()
 from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from messages.base64_image_dto.v1 import base64_image_dto_pb2 as messages_dot_base64__image__dto_dot_v1_dot_base64__image__dto__pb2
 from messages.image_dto.v1 import image_dto_pb2 as messages_dot_image__dto_dot_v1_dot_image__dto__pb2
+from messages.rect_dto.v1 import rect_dto_pb2 as messages_dot_rect__dto_dot_v1_dot_rect__dto__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n-services/motif_service/v1/motif_service.proto\x12\x10motif_service.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x33messages/base64_image_dto/v1/base64_image_dto.proto\x1a%messages/image_dto/v1/image_dto.proto\"S\n\x07\x42\x42oxDto\x12\x0c\n\x01x\x18\x01 \x01(\x05R\x01x\x12\x0c\n\x01y\x18\x02 \x01(\x05R\x01y\x12\x14\n\x05width\x18\x03 \x01(\x05R\x05width\x12\x16\n\x06height\x18\x04 \x01(\x05R\x06height\"N\n\x0eGetBBoxRequest\x12<\n\x05image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\x05image\"S\n\x13GetBBoxDebugRequest\x12<\n\x05image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\x05image\"A\n\x0fGetBBoxResponse\x12.\n\x05\x62_box\x18\x01 \x01(\x0b\x32\x19.motif_service.v1.BBoxDtoR\x04\x62\x42ox\"a\n\x14GetBBoxDebugResponse\x12I\n\x05image\x18\x01 \x01(\x0b\x32\x33.shared.messages.base64_image_dto.v1.Base64ImageDtoR\x05image2\xf2\x01\n\x0cMotifService\x12\x65\n\tget_b_box\x12 .motif_service.v1.GetBBoxRequest\x1a!.motif_service.v1.GetBBoxResponse\"\x13\x82\xd3\xe4\x93\x02\r\"\x08/v1/bbox:\x01*\x12{\n\x0fget_b_box_debug\x12%.motif_service.v1.GetBBoxDebugRequest\x1a&.motif_service.v1.GetBBoxDebugResponse\"\x19\x82\xd3\xe4\x93\x02\x13\"\x0e/v1/bbox/debug:\x01*B\xeb\x01\n\x14\x63om.motif_service.v1B\x11MotifServiceProtoP\x01Zcgithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/motif_service/v1;motif_servicev1\xa2\x02\x03MXX\xaa\x02\x0fMotifService.V1\xca\x02\x0fMotifService\\V1\xe2\x02\x1bMotifService\\V1\\GPBMetadata\xea\x02\x10MotifService::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n-services/motif_service/v1/motif_service.proto\x12\x10motif_service.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x33messages/base64_image_dto/v1/base64_image_dto.proto\x1a%messages/image_dto/v1/image_dto.proto\x1a#messages/rect_dto/v1/rect_dto.proto\"N\n\x0eGetBBoxRequest\x12<\n\x05image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\x05image\"S\n\x13GetBBoxDebugRequest\x12<\n\x05image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\x05image\"L\n\x0fGetBBoxResponse\x12\x39\n\x05\x62_box\x18\x01 \x01(\x0b\x32$.shared.messages.rect_dto.v1.RectDtoR\x04\x62\x42ox\"a\n\x14GetBBoxDebugResponse\x12I\n\x05image\x18\x01 \x01(\x0b\x32\x33.shared.messages.base64_image_dto.v1.Base64ImageDtoR\x05image2\xf2\x01\n\x0cMotifService\x12\x65\n\tget_b_box\x12 .motif_service.v1.GetBBoxRequest\x1a!.motif_service.v1.GetBBoxResponse\"\x13\x82\xd3\xe4\x93\x02\r\"\x08/v1/bbox:\x01*\x12{\n\x0fget_b_box_debug\x12%.motif_service.v1.GetBBoxDebugRequest\x1a&.motif_service.v1.GetBBoxDebugResponse\"\x19\x82\xd3\xe4\x93\x02\x13\"\x0e/v1/bbox/debug:\x01*B\xeb\x01\n\x14\x63om.motif_service.v1B\x11MotifServiceProtoP\x01Zcgithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/motif_service/v1;motif_servicev1\xa2\x02\x03MXX\xaa\x02\x0fMotifService.V1\xca\x02\x0fMotifService\\V1\xe2\x02\x1bMotifService\\V1\\GPBMetadata\xea\x02\x10MotifService::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,16 +40,14 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_MOTIFSERVICE'].methods_by_name['get_b_box']._serialized_options = b'\202\323\344\223\002\r\"\010/v1/bbox:\001*'
   _globals['_MOTIFSERVICE'].methods_by_name['get_b_box_debug']._loaded_options = None
   _globals['_MOTIFSERVICE'].methods_by_name['get_b_box_debug']._serialized_options = b'\202\323\344\223\002\023\"\016/v1/bbox/debug:\001*'
-  _globals['_BBOXDTO']._serialized_start=189
-  _globals['_BBOXDTO']._serialized_end=272
-  _globals['_GETBBOXREQUEST']._serialized_start=274
-  _globals['_GETBBOXREQUEST']._serialized_end=352
-  _globals['_GETBBOXDEBUGREQUEST']._serialized_start=354
-  _globals['_GETBBOXDEBUGREQUEST']._serialized_end=437
-  _globals['_GETBBOXRESPONSE']._serialized_start=439
-  _globals['_GETBBOXRESPONSE']._serialized_end=504
-  _globals['_GETBBOXDEBUGRESPONSE']._serialized_start=506
-  _globals['_GETBBOXDEBUGRESPONSE']._serialized_end=603
-  _globals['_MOTIFSERVICE']._serialized_start=606
-  _globals['_MOTIFSERVICE']._serialized_end=848
+  _globals['_GETBBOXREQUEST']._serialized_start=226
+  _globals['_GETBBOXREQUEST']._serialized_end=304
+  _globals['_GETBBOXDEBUGREQUEST']._serialized_start=306
+  _globals['_GETBBOXDEBUGREQUEST']._serialized_end=389
+  _globals['_GETBBOXRESPONSE']._serialized_start=391
+  _globals['_GETBBOXRESPONSE']._serialized_end=467
+  _globals['_GETBBOXDEBUGRESPONSE']._serialized_start=469
+  _globals['_GETBBOXDEBUGRESPONSE']._serialized_end=566
+  _globals['_MOTIFSERVICE']._serialized_start=569
+  _globals['_MOTIFSERVICE']._serialized_end=811
 # @@protoc_insertion_point(module_scope)

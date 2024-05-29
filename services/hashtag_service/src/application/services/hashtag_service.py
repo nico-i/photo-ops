@@ -19,7 +19,6 @@ class HashtagService(HashtagServiceServicer):
             model_kwargs={"torch_dtype": torch.bfloat16},
             device_map="auto",
             )
-        self.__logger = get_logger()
         self.__system_msg = {"role": "system", "content": "You are an Instagram hashtag generator that only \
                              responds with a string in the form of a csv. The string must contain a list of a \
                              maximum of 30 hashtags, which are related to the given image description. \
@@ -27,7 +26,7 @@ class HashtagService(HashtagServiceServicer):
                              and will maximize the reach of the final post. Do not include any special characters or quotations."}
         
     def get_hashtags(self, request: GetHashtagsRequest, context: RpcContext) -> GetHashtagsResponse:
-        self.__logger.info(f"request: {request}")
+        logging.info(f"request: {request}")
        
         messages = [
             self.__system_msg,
@@ -59,7 +58,7 @@ class HashtagService(HashtagServiceServicer):
         
         res = GetHashtagsResponse(hashtags_csv=prediction)
         
-        self.__logger.info(f"response: {res}")
+        logging.info(f"response: {res}")
         
         return res
         
