@@ -31,7 +31,7 @@ req_human:
 	grpcurl -plaintext -d '{"image":{"path":"$(IMG_PATH)/human.jpg"}}' $(HOST) $(GET_CAPTION)
 
 
-# Cropped examples (currently just uses the return bounding box from the motif service)
+# Cropped examples (currently the test data equals the returned bounding box from the motif service)
 
 req_animal_crop:
 	grpcurl -plaintext -d '{ \
