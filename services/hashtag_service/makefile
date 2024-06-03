@@ -1,21 +1,9 @@
 HOST := localhost:9092
 GET_HASHTAGS := hashtag_service.v1.HashtagService/get_hashtags
 IMG_PATH := test/images
+SERVICE := hashtag_service
 
-dev:
-	. env/bin/activate && cd ../.. && python -m services.hashtag_service.src.presentation.grpc
-
-venv:
-	python3 -m venv env
-
-install:
-	. env/bin/activate && pip install --force-reinstall --no-deps -r requirements.txt
-
-freeze:
-	. env/bin/activate && pip freeze > requirements.txt
-
-clean:
-	rm -rf env
+include ../../shared/makefile
 
 ### Examples ###
 

@@ -1,21 +1,9 @@
 HOST := localhost:9091
 GET_CAPTION := caption_service.v1.CaptionService/get_caption
 IMG_PATH := test/images
+SERVICE := caption_service
 
-dev:
-	. ./env/bin/activate && cd ../.. && python -m services.caption_service.src.presentation.grpc
-
-venv:
-	python3 -m venv env
-
-install:
-	. env/bin/activate && pip install --force-reinstall --no-deps -r requirements.txt
-
-freeze:
-	. ./env/bin/activate && pip freeze > requirements.txt
-
-clean:
-	rm -rf env
+include ../../shared/makefile
 
 ### Examples ###
 

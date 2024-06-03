@@ -1,0 +1,6 @@
+googleapis-common-protos==1.63.0
+grpcio==1.64.1
+grpcio-reflection==1.64.0
+numpy==1.26.4
+opencv-python==4.10.0.82
+protobuf==5.27.0

@@ -7,3 +7,12 @@ freeze_refresh:
 			fi; \
 		fi; \
 	done
+
+clean:
+	@for dir in $(wildcard services/*); do \
+		if [ -d "$$dir" ]; then \
+			if [ -f "$$dir/makefile" ]; then \
+				$(MAKE) -C $$dir clean; \
+			fi; \
+		fi; \
+	done
