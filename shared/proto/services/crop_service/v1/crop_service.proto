@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package crop_service.v1;
+
+import "google/api/annotations.proto";
+import "messages/image_dto/v1/image_dto.proto";
+import "messages/rect_dto/v1/rect_dto.proto";
+
+// Request message for the crop_image method
+message CropImageRequest {
+   // The image to be cropped
+   shared.messages.image_dto.v1.ImageDto input_image = 1;
+
+   // The rectangle to crop the image to
+   shared.messages.rect_dto.v1.RectDto crop_spec = 2;
+}
+
+message CropImageResponse {
+   // The cropped image
+   shared.messages.image_dto.v1.ImageDto cropped_image = 1;
+}
+
+// Request message for the get_crop_suggestion method
+message GetCropSuggestionRequest {
+    // The rectangle containing the motif of the image
+   shared.messages.rect_dto.v1.RectDto image_motif = 1;
+
+   // The input image width
+   uint32 image_width = 2;
+
+   // The input image height
+   uint32 image_height = 3;
+
+   uint32 target_crop_width = 4;
+
+   uint32 target_crop_height = 5;
+}
+
+message GetCropSuggestionResponse {
+      // The suggested rectangle to crop the image to
+      shared.messages.rect_dto.v1.RectDto crop_suggestion = 1;
+}
+
+
+// Service to handle all image cropping related operations
+service CropService {
+   /*
+   Crop an image to a given rectangle
+   */
+   rpc crop_image(CropImageRequest) returns (CropImageResponse) {
+      option (google.api.http) = {
+         post: "/v1/crop"
+         body: "*"
+      };
+   }
+
+   /* 
+   Provide a crop suggestion based on a given image and its motif.
+   The suggestion is created by trying to put the motif into the center of the crop spec.option
+   If the motif is too large no crop suggestion will be provided.
+   */
+   rpc get_crop_suggestion(GetCropSuggestionRequest) returns (GetCropSuggestionResponse) {
+      option (google.api.http) = {
+         post: "/v1/crop/suggestion"
+         body: "*"
+      };
+   }
+}
