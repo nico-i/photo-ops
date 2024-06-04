@@ -43,8 +43,8 @@ Please refer to [the table below](#examples) for the available make commands. *N
   <tr>
     <th>Make job</th>
     <th>Input image</th>
-    <th>Debug image</th>
-    <th>gRPCurl Response</th>
+    <th>gRPCurl debug response</th>
+    <th>gRPCurl response</th>
   </tr>
   <tr>
   <td>
