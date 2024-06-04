@@ -14,6 +14,14 @@ Please refer to the [proto file](../../shared/proto/services/motif_service/v1/mo
 
 ## Setup
 
+1. Clone [this repository](https://github.com/nico-i/photo-ops/tree/main) and navigate to the root directory.
+2. Navigate to the `services/motif_service` directory.
+3. Set up a python virtual environment with the pre-configured make command.
+4. Install the required dependencies to the virtual environment.
+5. Start the service. (optionally edit [the make file](./makefile) to change the port or disable debug mode)
+
+The above steps can be executed with the following commands:
+
 ```bash
 git clone https://github.com/nico-i/photo-ops.git
 cd photo-ops
@@ -22,14 +30,6 @@ make venv
 make install
 make dev
 ```
-
-The code above does the following:
-
-1. Clone [this repository](https://github.com/nico-i/photo-ops/tree/main) and navigate to the root directory.
-2. Navigate to the `services/motif_service` directory.
-3. Set up a python virtual environment with the pre-configured make command.
-4. Install the required dependencies to the virtual environment.
-5. Start the service. (optionally edit [the make file](./makefile) to change the port or disable debug mode)
 
 ## Usage
 
