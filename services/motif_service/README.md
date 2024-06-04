@@ -35,16 +35,16 @@ The code above does the following:
 
 If you have followed the setup instructions above, you can utilize the configured make commands to execute the example requests.
 
-Please refer to [the table below](#examples) for the available make commands. *Note: use the "debug" version of a make job to get the debug base64 image in the response.*
+Please refer to [the make file](./makefile) or [the table below](#examples) for the available make commands. *Note: use the "debug" version of a make job to get the debug base64 image in the response.*
 
 ## Examples
-
-### RPC `get_b_box`
 
 <table>
   <tr>
     <th>Make job</th>
+    <th>Debug make job</th>
     <th>Input image</th>
+    <th>Debug image</th>
     <th>gRPCurl response</th>
   </tr>
   <tr>
@@ -53,7 +53,13 @@ Please refer to [the table below](#examples) for the available make commands. *N
   `make req_obj`
   
   </td>
+  <td>
+
+  `make req_obj_debug`
+
+  </td>
   <td><img src="../../test/images/object.jpg" alt="Input image object"></td>
+  <td><img src="./docs/img/obj_debug.jpg" alt="Output debug image object"></td>
   <td>
   
   ```json
@@ -75,7 +81,13 @@ Please refer to [the table below](#examples) for the available make commands. *N
   `make req_human`
     
   </td>
+  <td>
+
+  `make req_human_debug`
+
+  </td>
   <td><img src="../../test/images/human.jpg" alt="Input image human"></td>
+  <td><img src="./docs/img/human_debug.jpg" alt="Output image"></td>
       <td>
   
   ```json
@@ -97,7 +109,13 @@ Please refer to [the table below](#examples) for the available make commands. *N
   `make req_animal`
     
   </td>
+  <td>
+
+  `make req_animal_debug`
+
+  </td>
     <td><img src="../../test/images/animal.jpg" alt="Input image animal"></td>
+    <td><img src="./docs/img/animal_debug.jpg" alt="Output image"></td>
         <td>
   
   ```json
@@ -112,43 +130,6 @@ Please refer to [the table below](#examples) for the available make commands. *N
   ```
 
   </td>
-  </tr>
-</table>
-
-### RPC `get_b_box_debug`
-
-<table>
-  <tr>
-    <th>Make job</th>
-    <th>Input image</th>
-    <th>Debug image</th>
-  </tr>
-  <tr>
-  <td>
-  
-  `make req_obj_debug`
-  
-  </td>
-  <td><img src="../../test/images/object.jpg" alt="Input image object"></td>
-  <td><img src="./docs/img/obj_debug.jpg" alt="Output debug image object"></td>
-  </tr>
-  <tr>
-  <td>
-    
-  `make req_human_debug`
-    
-  </td>
-  <td><img src="../../test/images/human.jpg" alt="Input image human"></td>
-  <td><img src="./docs/img/human_debug.jpg" alt="Output image"></td>
-  </tr>
-  <tr>
-  <td>
-    
-  `make req_animal_debug`
-    
-  </td>
-    <td><img src="../../test/images/animal.jpg" alt="Input image animal"></td>
-    <td><img src="./docs/img/animal_debug.jpg" alt="Output image"></td>
   </tr>
 </table>
 
