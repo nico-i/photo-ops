@@ -96,7 +96,7 @@ Please refer to [the make file](./makefile) or [the table below](#examples) for 
   </td>
   <td><img src="../../test/images/human.jpg" alt="Input image human"></td>
   <td><img src="./docs/img/human_debug.jpg" alt="Output image"></td>
-      <td>
+  <td>
   
   ```json
   {
@@ -126,9 +126,9 @@ Please refer to [the make file](./makefile) or [the table below](#examples) for 
   ```
 
   </td>
-    <td><img src="../../test/images/animal.jpg" alt="Input image animal"></td>
-    <td><img src="./docs/img/animal_debug.jpg" alt="Output image"></td>
-        <td>
+  <td><img src="../../test/images/animal.jpg" alt="Input image animal"></td>
+  <td><img src="./docs/img/animal_debug.jpg" alt="Output image"></td>
+  <td>
   
   ```json
   {
