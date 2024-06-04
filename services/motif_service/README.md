@@ -1,10 +1,6 @@
 # motif-service
 
-This service provides a bounding box for the motif i.e. the main subject of a given image via an http or gRPC calls.
-
-By using the [rembg](https://github.com/danielgatis/rembg#rembg) library the service takes an input image and removes its background.
-Based on the output, the service calculates the bounding box of the main subject and returns its information in JSON.
-Optionally, the service can also return a base64-encoded debug image with the bounding box, as well as the output image composed on top of the input image.
+This service provides endpoints for retrieving the bounding box of the motif i.e. the main subject of a given image.
 
 Please refer to the [proto file](../../shared/proto/services/motif_service/v1/motif_service.proto) for more information on the service's API.
 
