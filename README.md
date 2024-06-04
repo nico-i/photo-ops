@@ -3,16 +3,13 @@ A pipeline passing an image between different micro services to crop, caption, w
 
 NOTE: Currently all models used are cpu based.
 
-## Dependencies
+## Services
 
-- [Imaginary](https://github.com/h2non/imaginary)
-  - Responsibilities:
-    - Image cropping
-    - Image resizing
-    - Image compression
-- [rembg](https://github.com/danielgatis/rembg)
-  - Responsibilities:
-    - Image background removal -> provides subject of image
+- [Motif Service](./services/motif_service/README.md)
+- [Caption Service](./services/caption_service/README.md)
+- [Hashtag Service](./services/hashtag_service/README.md)
+- [Watermark Service](./services/watermark_service/README.md)
+- [Crop Service](./services/crop_service/README.md)
 
 ## Process
 
