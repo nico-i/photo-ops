@@ -50,12 +50,16 @@ Please refer to [the make file](./makefile) or [the table below](#examples) for 
   <tr>
   <td>
   
-  `make req_obj`
+  ```bash
+  make req_obj
+  ```
   
   </td>
   <td>
 
-  `make req_obj_debug`
+  ```bash
+  make req_obj_debug
+  ```
 
   </td>
   <td><img src="../../test/images/object.jpg" alt="Input image object"></td>
@@ -77,13 +81,17 @@ Please refer to [the make file](./makefile) or [the table below](#examples) for 
   </tr>
   <tr>
   <td>
-    
-  `make req_human`
-    
+  
+  ```bash
+  make req_human
+  ```
+
   </td>
   <td>
-
-  `make req_human_debug`
+  
+  ```bash
+  make req_human_debug
+  ```
 
   </td>
   <td><img src="../../test/images/human.jpg" alt="Input image human"></td>
@@ -106,12 +114,16 @@ Please refer to [the make file](./makefile) or [the table below](#examples) for 
   <tr>
   <td>
     
-  `make req_animal`
+  ```bash
+  make req_animal
+  ```
     
   </td>
   <td>
 
-  `make req_animal_debug`
+  ```bash
+  make req_animal_debug
+  ```
 
   </td>
     <td><img src="../../test/images/animal.jpg" alt="Input image animal"></td>
