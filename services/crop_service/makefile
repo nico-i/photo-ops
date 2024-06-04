@@ -26,10 +26,10 @@ req_obj:
 		"image_height": 720, \
 		"target_aspect_ratio": $(TARGET_ASPECT_RATIO), \
 		"image_motif": { \
-			"x": 208, \
-			"y": 176, \
-			"width": 537, \
-			"height": 371 \
+			"x": 428, \
+			"y": 195, \
+			"width": 286, \
+			"height": 463 \
 		}}' $(HOST) $(CROP_SUGGESTION)
 
 req_human:
@@ -37,9 +37,9 @@ req_human:
 		"image_width": 1080, \
 		"image_height": 721, \
 		"target_aspect_ratio": $(TARGET_ASPECT_RATIO), \
-		"image_motif": { \
-			"x": 428, \
-			"y": 195, \
-			"width": 286, \
-			"height": 463 \
+		"image_motif":  { \
+			"x": 208, \
+			"y": 176, \
+			"width": 537, \
+			"height": 371 \
 		}}' $(HOST) $(CROP_SUGGESTION)

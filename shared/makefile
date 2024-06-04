@@ -5,7 +5,7 @@ venv:
 	python -m venv env
 
 install:
-	. env/bin/activate && pip install --force-reinstall --no-deps -r requirements.txt
+	. env/bin/activate && pip install --upgrade --no-deps -r requirements.txt
 
 freeze:
 	. env/bin/activate && pip freeze > requirements.txt

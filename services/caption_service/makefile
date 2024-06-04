@@ -39,10 +39,10 @@ req_obj_crop:
 			"path":"$(IMG_PATH)/object.jpg" \
 		}, \
 		"crop": { \
-			"x": 208, \
-			"y": 176, \
-			"width": 537, \
-			"height": 371 \
+			"x": 428, \
+			"y": 195, \
+			"width": 286, \
+			"height": 463 \
 		}}' $(HOST) $(GET_CAPTION)
 
 req_human_crop:
@@ -51,8 +51,8 @@ req_human_crop:
 			"path":"$(IMG_PATH)/human.jpg" \
 		}, \
 		"crop": { \
-			"x": 428, \
-			"y": 195, \
-			"width": 286, \
-			"height": 463 \
+			"x": 208, \
+			"y": 176, \
+			"width": 537, \
+			"height": 371 \
 		}}' $(HOST) $(GET_CAPTION)

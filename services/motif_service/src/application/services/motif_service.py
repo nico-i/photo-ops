@@ -104,6 +104,8 @@ class MotifService(MotifServiceServicer):
 		no_bg_img_arr = self.__img_service.remove_bg(img)
 
 		b_box = self.__find_b_box(no_bg_img_arr)
+  
+		logging.info(f"Debug Bounding box: {b_box}")
 
 		binary_arr = self.__threshold_ndarray(no_bg_img_arr)
 
@@ -118,6 +120,8 @@ class MotifService(MotifServiceServicer):
 
 		# Draw the bounding box on the overlay image
 		cv2.rectangle(overlay_image, (b_box.x, b_box.y), (b_box.x + b_box.width, b_box.y + b_box.height), (0, 255, 0), 2)
+
+		logging.info(f"Debug image shape: {overlay_image.shape}")
 
 		composed_img = Image(overlay_image)
 

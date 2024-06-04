@@ -40,6 +40,7 @@ class Rectangle:
         """
         return RectDto(x=self.x, y=self.y, width=self.width, height=self.height)
     
+    @staticmethod
     def from_dto(dto: RectDto) -> "Rectangle":
         """
         Create a Rectangle object from a DTO
