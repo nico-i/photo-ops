@@ -33,7 +33,7 @@ The code above does the following:
 
 ## Usage
 
-If you have followed the setup instructions above, you can utilize the configured make commands execute the example requests.
+If you have followed the setup instructions above, you can utilize the configured make commands to execute the example requests.
 
 Please refer to [the table below](#examples) for the available make commands. *Note: use the "debug" version of a make job to get the debug base64 image in the response.*
 
