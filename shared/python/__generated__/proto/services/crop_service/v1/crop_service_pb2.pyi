@@ -36,9 +36,9 @@ class GetCropSuggestionRequest(_message.Message):
     def __init__(self, image_motif: _Optional[_Union[_rect_dto_pb2.RectDto, _Mapping]] = ..., image_width: _Optional[int] = ..., image_height: _Optional[int] = ..., target_aspect_ratio: _Optional[float] = ...) -> None: ...
 
 class GetCropSuggestionResponse(_message.Message):
-    __slots__ = ("crop_suggestion", "suggestion_out_of_bounds")
+    __slots__ = ("crop_suggestion", "invalid_bounds")
     CROP_SUGGESTION_FIELD_NUMBER: _ClassVar[int]
-    SUGGESTION_OUT_OF_BOUNDS_FIELD_NUMBER: _ClassVar[int]
+    INVALID_BOUNDS_FIELD_NUMBER: _ClassVar[int]
     crop_suggestion: _rect_dto_pb2.RectDto
-    suggestion_out_of_bounds: bool
-    def __init__(self, crop_suggestion: _Optional[_Union[_rect_dto_pb2.RectDto, _Mapping]] = ..., suggestion_out_of_bounds: bool = ...) -> None: ...
+    invalid_bounds: bool
+    def __init__(self, crop_suggestion: _Optional[_Union[_rect_dto_pb2.RectDto, _Mapping]] = ..., invalid_bounds: bool = ...) -> None: ...

@@ -3,7 +3,7 @@ CROP_IMAGE := crop_service.v1.CropService/crop_image
 CROP_SUGGESTION := crop_service.v1.CropService/get_crop_suggestion
 IMG_PATH := test/images
 SERVICE := crop_service
-TARGET_ASPECT_RATIO := 1.0
+TARGET_ASPECT_RATIO := 0.8
 
 include ../../shared/makefile
 

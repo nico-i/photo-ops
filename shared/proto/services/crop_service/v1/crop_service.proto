@@ -43,7 +43,7 @@ message GetCropSuggestionResponse {
       shared.messages.rect_dto.v1.RectDto crop_suggestion = 1;
 
       // Whether or not the suggestion is outside of the image bounds
-      bool suggestion_out_of_bounds = 2;
+      bool invalid_bounds = 2;
 }
 
 

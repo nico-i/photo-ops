@@ -73,7 +73,8 @@ class CropService(CropServiceServicer):
         
         suggestion_dto = suggestion.to_dto()
         
-        # if the crop rectangle is outside the image bounds, return a suggestion with the out_of_bounds flag set to true
-        if crop_x < 0 or crop_y < 0 or crop_x + crop_w > image_width or crop_y + crop_h > image_height:
-            return GetCropSuggestionResponse(crop_suggestion=suggestion_dto, suggestion_out_of_bounds=True)
+        # if the crop rectangle is smaller than the motif, return a suggestion with the out_of_bounds flag set to true
+        if crop_w < motif_width or crop_h < motif_height:
+            return GetCropSuggestionResponse(crop_suggestion=suggestion_dto, invalid_bounds=True)
+            
         return GetCropSuggestionResponse(crop_suggestion=suggestion_dto)
