@@ -44,7 +44,7 @@ Please refer to [the table below](#examples) for the available make commands. *N
     <th>Make job</th>
     <th>Input image</th>
     <th>Debug image</th>
-    <th>Response</th>
+    <th>gRPCurl Response</th>
   </tr>
   <tr>
   <td>
