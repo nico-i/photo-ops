@@ -3,6 +3,7 @@ GET_B_BOX := motif_service.v1.MotifService/get_b_box
 GET_B_BOX_DEBUG := motif_service.v1.MotifService/get_b_box_debug
 IMG_PATH := test/images
 SERVICE := motif_service
+SERVICE_FLAGS := --debug
 
 include ../../shared/makefile
 

@@ -1,5 +1,5 @@
 dev:
-	. env/bin/activate && cd ../.. && python -m services.$(SERVICE).src.presentation.grpc
+	. env/bin/activate && cd ../.. && python -m services.$(SERVICE).src.presentation.grpc $(SERVICE_FLAGS)
 
 venv:
 	python -m venv env

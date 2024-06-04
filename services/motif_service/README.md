@@ -6,23 +6,71 @@ By using the [rembg](https://github.com/danielgatis/rembg#rembg) library the ser
 Based on the output, the service calculates the bounding box of the main subject and returns its information in JSON.
 Optionally, the service can also return a base64-encoded debug image with the bounding box, as well as the output image composed on top of the input image.
 
+Please refer to the [proto file](../../shared/proto/services/motif_service/v1/motif_service.proto) for more information on the service's API.
+
 ## Examples
 
-| Input                                      | Debug Image                                       | Output                                              |
-| ------------------------------------------ | ------------------------------------------------- | --------------------------------------------------- |
-| ![Input image](./docs/examples/obj.jpg)    | ![Output image](./docs/examples/obj_debug.png)    | `{"x": 415,"y": 97,"width": 310,"height": 569}`     |
-| ![Input image](./docs/examples/person.jpg) | ![Output image](./docs/examples/person_debug.png) | `{"x": 426, "y": 119, "width": 288, "height": 540}` |
-| ![Input image](./docs/examples/animal.jpg) | ![Output image](./docs/examples/animal_debug.png) | `{"x": 176, "y": 63, "width": 726, "height": 656}`  |
+<table>
+  <tr>
+    <th>Input</th>
+    <th>Debug Image</th>
+    <th>Output</th>
+  </tr>
+  <tr>
+    <td><img src="../../test/images/object.jpg" alt="Input image object"></td>
+    <td><img src="./docs/img/obj_debug.jpg" alt="Output debug image object"></td>
+    <td>
+  
+  ```json
+  {
+    "bBox": {
+      "x": 428,
+      "y": 195,
+      "width": 286,
+      "height": 463
+    }
+  }
+  ```
 
-## Dependencies
+  </td>
+  </tr>
+  <tr>
+    <td><img src="../../test/images/human.jpg" alt="Input image human"></td>
+    <td><img src="./docs/img/human_debug.jpg" alt="Output image"></td>
+       <td>
+  
+  ```json
+  {
+    "bBox": {
+      "x": 208,
+      "y": 176,
+      "width": 537,
+      "height": 371
+    }
+  }
+  ```
 
-This service depends on the following repositories:
+  </td>
+  </tr>
+  <tr>
+    <td><img src="../../test/images/animal.jpg" alt="Input image animal"></td>
+    <td><img src="./docs/img/animal_debug.jpg" alt="Output image"></td>
+        <td>
+  
+  ```json
+  {
+    "bBox": {
+      "x": 219,
+      "y": 65,
+      "width": 680,
+      "height": 655
+    }
+  }
+  ```
 
-- `Go`
-  - [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway#grpc-gateway) — generation of gRPC stubs, OpenAPI specification and http gateway
-- `Python`
-  - [rembg](https://github.com/danielgatis/rembg#rembg) — removal of an image's background
-  - [Pillow](https://github.com/python-pillow/Pillow#pillow) — denoising, bounding box calculation and drawing
+  </td>
+  </tr>
+</table>
 
 ## Credits
 
