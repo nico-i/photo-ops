@@ -4,6 +4,14 @@ This service provides endpoints for retrieving the bounding box of the motif i.e
 
 Please refer to the [proto file](../../shared/proto/services/motif_service/v1/motif_service.proto) for more information on the service's API.
 
+## Requirements
+
+- [Python 3.11.7](https://www.python.org/downloads/release/python-3117/)
+  - I recommend to using [pyenv](https://github.com/pyenv/pyenv) to manage python versions
+- [gRPCurl](https://github.com/fullstorydev/grpcurl)
+- [Make](https://www.gnu.org/software/make/) (optional)
+  - should be pre-installed on most Unix-like systems
+
 ## Setup
 
 ```bash
@@ -24,8 +32,6 @@ The code above does the following:
 5. Start the service. (optionally edit [the make file](./makefile) to change the port or disable debug mode)
 
 ## Usage
-
-It is recommended to use [gRPCurl](https://github.com/fullstorydev/grpcurl) to interact with the service.
 
 If you have followed the setup instructions above, you can utilize the configured make commands execute the example requests.
 
