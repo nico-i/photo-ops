@@ -4,18 +4,51 @@ This service provides endpoints for retrieving the bounding box of the motif i.e
 
 Please refer to the [proto file](../../shared/proto/services/motif_service/v1/motif_service.proto) for more information on the service's API.
 
+## Setup
+
+```bash
+git clone https://github.com/nico-i/photo-ops.git
+cd photo-ops
+cd services/motif_service
+make venv
+make install
+make dev
+```
+
+The code above does the following:
+
+1. Clone [this repository](https://github.com/nico-i/photo-ops/tree/main) and navigate to the root directory.
+2. Navigate to the `services/motif_service` directory.
+3. Set up a python virtual environment with the pre-configured make command.
+4. Install the required dependencies to the virtual environment.
+5. Start the service. (optionally edit [the make file](./makefile) to change the port or disable debug mode)
+
+## Usage
+
+It is recommended to use [gRPCurl](https://github.com/fullstorydev/grpcurl) to interact with the service.
+
+If you have followed the setup instructions above, you can utilize the configured make commands execute the example requests.
+
+Please refer to [the table below](#examples) for the available make commands. *Note: use the "debug" version of a make job to get the debug base64 image in the response.*
+
 ## Examples
 
 <table>
   <tr>
-    <th>Input</th>
-    <th>Debug Image</th>
-    <th>Output</th>
+    <th>Make job</th>
+    <th>Input image</th>
+    <th>Debug image</th>
+    <th>Response</th>
   </tr>
   <tr>
-    <td><img src="../../test/images/object.jpg" alt="Input image object"></td>
-    <td><img src="./docs/img/obj_debug.jpg" alt="Output debug image object"></td>
-    <td>
+  <td>
+  
+  `make req_obj` or `make req_obj_debug`
+  
+  </td>
+  <td><img src="../../test/images/object.jpg" alt="Input image object"></td>
+  <td><img src="./docs/img/obj_debug.jpg" alt="Output debug image object"></td>
+  <td>
   
   ```json
   {
@@ -31,9 +64,14 @@ Please refer to the [proto file](../../shared/proto/services/motif_service/v1/mo
   </td>
   </tr>
   <tr>
-    <td><img src="../../test/images/human.jpg" alt="Input image human"></td>
-    <td><img src="./docs/img/human_debug.jpg" alt="Output image"></td>
-       <td>
+  <td>
+    
+  `make req_human` or `make req_human_debug`
+    
+  </td>
+  <td><img src="../../test/images/human.jpg" alt="Input image human"></td>
+  <td><img src="./docs/img/human_debug.jpg" alt="Output image"></td>
+      <td>
   
   ```json
   {
@@ -49,6 +87,11 @@ Please refer to the [proto file](../../shared/proto/services/motif_service/v1/mo
   </td>
   </tr>
   <tr>
+  <td>
+    
+  `make req_animal` or `make req_animal_debug`
+    
+  </td>
     <td><img src="../../test/images/animal.jpg" alt="Input image animal"></td>
     <td><img src="./docs/img/animal_debug.jpg" alt="Output image"></td>
         <td>
