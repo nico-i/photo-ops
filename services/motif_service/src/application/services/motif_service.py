@@ -7,7 +7,6 @@ from grpc import RpcContext
 
 from services.motif_service.src.application.services.image_service import \
     ImageService
-from services.motif_service.src.domain.value_objects.b_box import BBox
 from shared.python.__generated__.proto.messages.base64_image_dto.v1.base64_image_dto_pb2 import \
     Base64ImageDto
 from shared.python.__generated__.proto.services.motif_service.v1.motif_service_pb2 import (
@@ -15,6 +14,7 @@ from shared.python.__generated__.proto.services.motif_service.v1.motif_service_p
 from shared.python.__generated__.proto.services.motif_service.v1.motif_service_pb2_grpc import \
     MotifServiceServicer
 from shared.python.domain.value_objects.image import Image
+from shared.python.domain.value_objects.rectangle import Rectangle
 
 
 class MotifService(MotifServiceServicer):
@@ -44,7 +44,7 @@ class MotifService(MotifServiceServicer):
 
 		return binary_arr
 
-	def __find_b_box(self, img_arr: np.array) -> BBox:
+	def __find_b_box(self, img_arr: np.array) -> Rectangle:
 		"""
 		Find the largest contour in a image mask contained in a ndarray
 		
@@ -62,7 +62,7 @@ class MotifService(MotifServiceServicer):
 
 		x, y, w, h = cv2.boundingRect(largest_contour)
 
-		b_box = BBox(x, y, w, h)
+		b_box = Rectangle(x, y, w, h)
 
 		return b_box
 

@@ -13,6 +13,9 @@ message CropImageRequest {
 
    // The rectangle to crop the image to
    shared.messages.rect_dto.v1.RectDto crop_spec = 2;
+
+   // If provided the cropped image will be saved to the given path instead of returning a base64 encoded image
+   optional string output_path = 3;
 }
 
 message CropImageResponse {
@@ -31,14 +34,16 @@ message GetCropSuggestionRequest {
    // The input image height
    uint32 image_height = 3;
 
-   uint32 target_crop_width = 4;
-
-   uint32 target_crop_height = 5;
+   // The target aspect ratio of the crop suggestion, example 16:9 where 16 is the width and 9 is the height
+   float target_aspect_ratio = 4;
 }
 
 message GetCropSuggestionResponse {
       // The suggested rectangle to crop the image to
       shared.messages.rect_dto.v1.RectDto crop_suggestion = 1;
+
+      // Whether or not the suggestion is outside of the image bounds
+      bool suggestion_out_of_bounds = 2;
 }
 
 

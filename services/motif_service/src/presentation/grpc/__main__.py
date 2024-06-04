@@ -1,7 +1,7 @@
 import logging
 
 import shared.python.__generated__.proto.services.motif_service.v1.motif_service_pb2_grpc as motif_service_pb2_grpc
-from services.motif_service.src.application.services.b_box_service import \
+from services.motif_service.src.application.services.motif_service import \
     MotifService
 from services.motif_service.src.application.services.image_service import \
     ImageService

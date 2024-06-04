@@ -46,6 +46,20 @@ class Image:
         
         return base64_string
     
+    def to_dto(self, path: str = "") -> ImageDto:
+        """
+        Convert the Image object to a ImageDto object
+
+        Returns:
+            ImageDto: A ImageDto object
+        """
+        dto = ImageDto()
+        if path:
+            dto.path = path
+        else:
+            dto.base64_string = self.to_base64_string()
+        return dto
+    
     @staticmethod
     def from_dto(dto: ImageDto) -> 'Image':
         """

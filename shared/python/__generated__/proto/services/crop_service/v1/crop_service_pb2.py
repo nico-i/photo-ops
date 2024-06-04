@@ -27,7 +27,7 @@ from messages.image_dto.v1 import image_dto_pb2 as messages_dot_image__dto_dot_v
 from messages.rect_dto.v1 import rect_dto_pb2 as messages_dot_rect__dto_dot_v1_dot_rect__dto__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+services/crop_service/v1/crop_service.proto\x12\x0f\x63rop_service.v1\x1a\x1cgoogle/api/annotations.proto\x1a%messages/image_dto/v1/image_dto.proto\x1a#messages/rect_dto/v1/rect_dto.proto\"\x9e\x01\n\x10\x43ropImageRequest\x12G\n\x0binput_image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\ninputImage\x12\x41\n\tcrop_spec\x18\x02 \x01(\x0b\x32$.shared.messages.rect_dto.v1.RectDtoR\x08\x63ropSpec\"`\n\x11\x43ropImageResponse\x12K\n\rcropped_image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\x0c\x63roppedImage\"\xff\x01\n\x18GetCropSuggestionRequest\x12\x45\n\x0bimage_motif\x18\x01 \x01(\x0b\x32$.shared.messages.rect_dto.v1.RectDtoR\nimageMotif\x12\x1f\n\x0bimage_width\x18\x02 \x01(\rR\nimageWidth\x12!\n\x0cimage_height\x18\x03 \x01(\rR\x0bimageHeight\x12*\n\x11target_crop_width\x18\x04 \x01(\rR\x0ftargetCropWidth\x12,\n\x12target_crop_height\x18\x05 \x01(\rR\x10targetCropHeight\"j\n\x19GetCropSuggestionResponse\x12M\n\x0f\x63rop_suggestion\x18\x01 \x01(\x0b\x32$.shared.messages.rect_dto.v1.RectDtoR\x0e\x63ropSuggestion2\x86\x02\n\x0b\x43ropService\x12h\n\ncrop_image\x12!.crop_service.v1.CropImageRequest\x1a\".crop_service.v1.CropImageResponse\"\x13\x82\xd3\xe4\x93\x02\r\"\x08/v1/crop:\x01*\x12\x8c\x01\n\x13get_crop_suggestion\x12).crop_service.v1.GetCropSuggestionRequest\x1a*.crop_service.v1.GetCropSuggestionResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x13/v1/crop/suggestion:\x01*B\xe3\x01\n\x13\x63om.crop_service.v1B\x10\x43ropServiceProtoP\x01Zagithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/crop_service/v1;crop_servicev1\xa2\x02\x03\x43XX\xaa\x02\x0e\x43ropService.V1\xca\x02\x0e\x43ropService\\V1\xe2\x02\x1a\x43ropService\\V1\\GPBMetadata\xea\x02\x0f\x43ropService::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n+services/crop_service/v1/crop_service.proto\x12\x0f\x63rop_service.v1\x1a\x1cgoogle/api/annotations.proto\x1a%messages/image_dto/v1/image_dto.proto\x1a#messages/rect_dto/v1/rect_dto.proto\"\xd4\x01\n\x10\x43ropImageRequest\x12G\n\x0binput_image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\ninputImage\x12\x41\n\tcrop_spec\x18\x02 \x01(\x0b\x32$.shared.messages.rect_dto.v1.RectDtoR\x08\x63ropSpec\x12$\n\x0boutput_path\x18\x03 \x01(\tH\x00R\noutputPath\x88\x01\x01\x42\x0e\n\x0c_output_path\"`\n\x11\x43ropImageResponse\x12K\n\rcropped_image\x18\x01 \x01(\x0b\x32&.shared.messages.image_dto.v1.ImageDtoR\x0c\x63roppedImage\"\xd5\x01\n\x18GetCropSuggestionRequest\x12\x45\n\x0bimage_motif\x18\x01 \x01(\x0b\x32$.shared.messages.rect_dto.v1.RectDtoR\nimageMotif\x12\x1f\n\x0bimage_width\x18\x02 \x01(\rR\nimageWidth\x12!\n\x0cimage_height\x18\x03 \x01(\rR\x0bimageHeight\x12.\n\x13target_aspect_ratio\x18\x04 \x01(\x02R\x11targetAspectRatio\"\xa3\x01\n\x19GetCropSuggestionResponse\x12M\n\x0f\x63rop_suggestion\x18\x01 \x01(\x0b\x32$.shared.messages.rect_dto.v1.RectDtoR\x0e\x63ropSuggestion\x12\x37\n\x18suggestion_out_of_bounds\x18\x02 \x01(\x08R\x15suggestionOutOfBounds2\x86\x02\n\x0b\x43ropService\x12h\n\ncrop_image\x12!.crop_service.v1.CropImageRequest\x1a\".crop_service.v1.CropImageResponse\"\x13\x82\xd3\xe4\x93\x02\r\"\x08/v1/crop:\x01*\x12\x8c\x01\n\x13get_crop_suggestion\x12).crop_service.v1.GetCropSuggestionRequest\x1a*.crop_service.v1.GetCropSuggestionResponse\"\x1e\x82\xd3\xe4\x93\x02\x18\"\x13/v1/crop/suggestion:\x01*B\xe3\x01\n\x13\x63om.crop_service.v1B\x10\x43ropServiceProtoP\x01Zagithub.com/nico-i/photo-ops/shared/go/__generated__/proto/services/crop_service/v1;crop_servicev1\xa2\x02\x03\x43XX\xaa\x02\x0e\x43ropService.V1\xca\x02\x0e\x43ropService\\V1\xe2\x02\x1a\x43ropService\\V1\\GPBMetadata\xea\x02\x0f\x43ropService::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -40,13 +40,13 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_CROPSERVICE'].methods_by_name['get_crop_suggestion']._loaded_options = None
   _globals['_CROPSERVICE'].methods_by_name['get_crop_suggestion']._serialized_options = b'\202\323\344\223\002\030\"\023/v1/crop/suggestion:\001*'
   _globals['_CROPIMAGEREQUEST']._serialized_start=171
-  _globals['_CROPIMAGEREQUEST']._serialized_end=329
-  _globals['_CROPIMAGERESPONSE']._serialized_start=331
-  _globals['_CROPIMAGERESPONSE']._serialized_end=427
-  _globals['_GETCROPSUGGESTIONREQUEST']._serialized_start=430
-  _globals['_GETCROPSUGGESTIONREQUEST']._serialized_end=685
-  _globals['_GETCROPSUGGESTIONRESPONSE']._serialized_start=687
-  _globals['_GETCROPSUGGESTIONRESPONSE']._serialized_end=793
-  _globals['_CROPSERVICE']._serialized_start=796
-  _globals['_CROPSERVICE']._serialized_end=1058
+  _globals['_CROPIMAGEREQUEST']._serialized_end=383
+  _globals['_CROPIMAGERESPONSE']._serialized_start=385
+  _globals['_CROPIMAGERESPONSE']._serialized_end=481
+  _globals['_GETCROPSUGGESTIONREQUEST']._serialized_start=484
+  _globals['_GETCROPSUGGESTIONREQUEST']._serialized_end=697
+  _globals['_GETCROPSUGGESTIONRESPONSE']._serialized_start=700
+  _globals['_GETCROPSUGGESTIONRESPONSE']._serialized_end=863
+  _globals['_CROPSERVICE']._serialized_start=866
+  _globals['_CROPSERVICE']._serialized_end=1128
 # @@protoc_insertion_point(module_scope)
