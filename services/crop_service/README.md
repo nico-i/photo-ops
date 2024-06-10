@@ -247,7 +247,6 @@ The examples below use a target aspect ratio of 0.8, which is equivalent to a 4:
         "width": 537,
         "height": 371
     }
-
 }
 ```
 </td>
