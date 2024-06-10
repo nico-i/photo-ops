@@ -5,7 +5,9 @@ from typing import ClassVar as _ClassVar, Optional as _Optional
 DESCRIPTOR: _descriptor.FileDescriptor
 
 class ImageDto(_message.Message):
-    __slots__ = ("path",)
+    __slots__ = ("path", "base64")
     PATH_FIELD_NUMBER: _ClassVar[int]
+    BASE64_FIELD_NUMBER: _ClassVar[int]
     path: str
-    def __init__(self, path: _Optional[str] = ...) -> None: ...
+    base64: bytes
+    def __init__(self, path: _Optional[str] = ..., base64: _Optional[bytes] = ...) -> None: ...

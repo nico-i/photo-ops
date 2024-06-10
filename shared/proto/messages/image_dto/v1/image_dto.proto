@@ -7,5 +7,7 @@ message ImageDto {
 	oneof source {
 		// The path to the image file on the server.
 		string path = 1;
+		// The image data as a byte array.
+		bytes base64 = 2;
 	}
 }

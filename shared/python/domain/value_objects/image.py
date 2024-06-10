@@ -31,7 +31,7 @@ class Image:
         pil_image = PILImage.fromarray(cv_image_rgb)
         return pil_image
             
-    def to_base64_string(self) -> str:
+    def to_base64_string(self) -> bytes:
         """
         Convert the image to base64 string
 
@@ -42,7 +42,7 @@ class Image:
         _, img_data = cv2.imencode(".jpg", self.__cv2_image)
         
         # Convert bytes data to base64 string
-        base64_string = base64.b64encode(img_data).decode()
+        base64_string = base64.b64encode(img_data)
         
         return base64_string
     
@@ -53,12 +53,11 @@ class Image:
         Returns:
             ImageDto: A ImageDto object
         """
-        dto = ImageDto()
         if path:
-            dto.path = path
-        else:
-            dto.base64_string = self.to_base64_string()
-        return dto
+            return ImageDto(path=path)
+    
+        base64_string = self.to_base64_string()
+        return ImageDto(base64=base64_string)
     
     @staticmethod
     def from_dto(dto: ImageDto) -> 'Image':

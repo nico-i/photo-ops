@@ -1,4 +1,5 @@
 import logging
+import os
 from operator import is_
 
 import cv2
@@ -17,10 +18,13 @@ class CropService(CropServiceServicer):
     
     def crop_image(self, request: CropImageRequest, context: RpcContext) -> CropImageResponse:
         input_image = Image.from_dto(request.input_image)
-        target_crop = Rectangle.from_dto(request.target_crop)
+        logging.info(f"Received image with shape {input_image.get_cv2_img().shape}")
+        
+        crop_spec = Rectangle.from_dto(request.crop_spec)
+        logging.info(f"Received crop spec {crop_spec.get_values()}")
         
         input_image_cv2 = input_image.get_cv2_img()
-        x, y, w, h = target_crop.get_values()
+        x, y, w, h = crop_spec.get_values()
         
         cropped_image_cv2 = input_image_cv2[y:y+h, x:x+w]
         
@@ -29,7 +33,11 @@ class CropService(CropServiceServicer):
         output_path = request.output_path
         
         if len(output_path) > 0:
+            if not os.path.exists(os.path.dirname(output_path)):
+                logging.warning(f"Output directory {os.path.dirname(output_path)} does not exist. Creating it.")
+                os.makedirs(os.path.dirname(output_path))
             cv2.imwrite(output_path, cropped_image_cv2)
+            logging.info(f"Image cropped and saved to {output_path}")
             return CropImageResponse(cropped_image=cropped_image.to_dto(output_path))
         
         return CropImageResponse(cropped_image=cropped_image.to_dto())

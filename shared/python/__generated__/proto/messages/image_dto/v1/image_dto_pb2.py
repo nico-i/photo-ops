@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%messages/image_dto/v1/image_dto.proto\x12\x1cshared.messages.image_dto.v1\"*\n\x08ImageDto\x12\x14\n\x04path\x18\x01 \x01(\tH\x00R\x04pathB\x08\n\x06sourceB\x9d\x02\n com.shared.messages.image_dto.v1B\rImageDtoProtoP\x01Z[github.com/nico-i/photo-ops/shared/go/__generated__/proto/messages/image_dto/v1;image_dtov1\xa2\x02\x03SMI\xaa\x02\x1bShared.Messages.ImageDto.V1\xca\x02\x1bShared\\Messages\\ImageDto\\V1\xe2\x02\'Shared\\Messages\\ImageDto\\V1\\GPBMetadata\xea\x02\x1eShared::Messages::ImageDto::V1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n%messages/image_dto/v1/image_dto.proto\x12\x1cshared.messages.image_dto.v1\"D\n\x08ImageDto\x12\x14\n\x04path\x18\x01 \x01(\tH\x00R\x04path\x12\x18\n\x06\x62\x61se64\x18\x02 \x01(\x0cH\x00R\x06\x62\x61se64B\x08\n\x06sourceB\x9d\x02\n com.shared.messages.image_dto.v1B\rImageDtoProtoP\x01Z[github.com/nico-i/photo-ops/shared/go/__generated__/proto/messages/image_dto/v1;image_dtov1\xa2\x02\x03SMI\xaa\x02\x1bShared.Messages.ImageDto.V1\xca\x02\x1bShared\\Messages\\ImageDto\\V1\xe2\x02\'Shared\\Messages\\ImageDto\\V1\\GPBMetadata\xea\x02\x1eShared::Messages::ImageDto::V1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -33,5 +33,5 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'\n com.shared.messages.image_dto.v1B\rImageDtoProtoP\001Z[github.com/nico-i/photo-ops/shared/go/__generated__/proto/messages/image_dto/v1;image_dtov1\242\002\003SMI\252\002\033Shared.Messages.ImageDto.V1\312\002\033Shared\\Messages\\ImageDto\\V1\342\002\'Shared\\Messages\\ImageDto\\V1\\GPBMetadata\352\002\036Shared::Messages::ImageDto::V1'
   _globals['_IMAGEDTO']._serialized_start=71
-  _globals['_IMAGEDTO']._serialized_end=113
+  _globals['_IMAGEDTO']._serialized_end=139
 # @@protoc_insertion_point(module_scope)
