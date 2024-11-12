@@ -56,3 +56,21 @@ NOTE: Currently all models used are cpu based.
 - docker-compose
 - Go
 - bash
+
+## User Journey
+
+1. Add images
+   1. press the + button or drag images into the home page
+   2. prompt appears which asks how the images should be processed (selections are stored as defaults for later additions)
+2. begin processing (multithreaded => start new service instances)
+   1. resize image whilst keeping the aspect ratio so that width is 1080px (maximum instagram width)
+   2. read location from image data => if exists ? save to DB : skip location data
+   3. losslessly compress images using squoosh
+   4. if AI crop is active
+      1. determine motif using motif service and save bbox to DB
+      2. if defined crop ratio is fittable with motif ? auto-crop and save crop to DB : **mark image as input needed**
+   5. else
+      1. **mark image as input is needed**
+   6. ai generate image caption and save to DB as alttext
+   7. if ai hashtag is active ? generate ai caption with hashtags and save to db : **mark image as input needed**
+3. MVP: User can press show JSON button to receive a JSON overview of all the details relating to an image when it is done processing
